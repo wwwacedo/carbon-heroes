@@ -1,57 +1,11 @@
-enum Categoria {
-  Transporte = "Transporte",
-  EnergiaEmCasa = "Energia em Casa",
-  Alimentacao = "Alimentação"
-}
-
-enum Unidade {
-	Booleano = "booleano",
-	Pessoa = "pessoa(s)",
-	Litro = "litro(s)",
-	MetroCubico = "metro(s) cúbico(s)",
-	Viagem = "viagem(ns)",
-	Km = "km",
-	KWh = "kWh",
-	Mes = "mes(es)",
-	Kg = "kg(s)",
-	Unidade = "unidade(s)"
-}
-
-type Pergunta = {
-  id: number;
-  categoria: Categoria;
-  texto: string;
-  unidadeResposta?: string;
-  fatorConversao?: number;
-};
-
-// em kg de CO2 por unidades de resposta
-enum Fator {
-	Gasolina = 2.3,
-	Etanol = 1.5,
-	Diesel = 2.7,
-	GNV = 2.7,
-	Onibus = 0.089,
-	MetroOuTrem = 0.041,
-	AviaoCurtaDistancia = 0.25,
-	AviaoMediaDistancia = 0.15,
-	AviaoLongaDistancia = 0.12,
-	EnergiaEletrica = 0.1,
-	BotijaoDeGas = 37.7,
-	GasEncanado = 2.9,
-	CarneBovina = 27,
-	CarneFrango = 6.9,
-	CarneSuina = 12.1,
-	Leite = 1.3,
-	Ovo = 0.0375 
-}
+import { Categoria, Pergunta, Unidade } from "./types";
 
 export const perguntas: Pergunta[] = [
-  { 
+  {
     id: 1,
-    categoria: Categoria.Transporte, 
+    categoria: Categoria.Transporte,
     texto: "Você possui carro?",
-    unidadeResposta: Unidade.Booleano, 
+    unidadeResposta: Unidade.Booleano,
   },
   {
     id: 2,
@@ -128,19 +82,22 @@ export const perguntas: Pergunta[] = [
   {
     id: 14,
     categoria: Categoria.Transporte,
-    texto: "Quantas viagens de curta distância (até 1.000 km) você fez nos últimos 12 meses (ida e volta = 1 viagem)?",
+    texto:
+      "Quantas viagens de curta distância (até 1.000 km) você fez nos últimos 12 meses (ida e volta = 1 viagem)?",
     unidadeResposta: Unidade.Viagem,
   },
   {
     id: 15,
     categoria: Categoria.Transporte,
-    texto: "Quantas viagens de média distância (1.000 a 3.700 km) você fez nos últimos 12 meses (ida e volta = 1 viagem)?",
+    texto:
+      "Quantas viagens de média distância (1.000 a 3.700 km) você fez nos últimos 12 meses (ida e volta = 1 viagem)?",
     unidadeResposta: Unidade.Viagem,
   },
   {
     id: 16,
     categoria: Categoria.Transporte,
-    texto: "Quantas viagens de longa distância (mais de 5.000 km) você fez nos últimos 12 meses (ida e volta = 1 viagem)?",
+    texto:
+      "Quantas viagens de longa distância (mais de 5.000 km) você fez nos últimos 12 meses (ida e volta = 1 viagem)?",
     unidadeResposta: Unidade.Viagem,
   },
   {
