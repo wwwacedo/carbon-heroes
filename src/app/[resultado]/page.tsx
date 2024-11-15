@@ -1,6 +1,7 @@
 import CardHero from "@/components/card-hero";
 import React from "react";
 
+
 // http://localhost:3000/resultado?nome=Mariana&p1=1&p2=2&p3=30&p4=9&p5=6&p6=5&p7=1&p8=2&p9=3&p10=1&p11=2&p12=5&p13=1&p14=2&p15=1&p16=2&p17=1&p18=2&p19=1&p20=2&p21=1&p22=2&p23=1&p24=3&p25=2&p26=4&p27=5&p28=4
 export default async function ResultadoPage({
   searchParams,

@@ -9,7 +9,7 @@ export function calcularTransporteIndividual(
   consumoSemanalEtanol: number, // em litros
   consumoSemanalDiesel: number, // em litros
   consumoSemanalGNV: number // em m3
-) {
+): number {
   // Prevenindo divisão por zero
   const qtddPessoas =
     qtddPessoasTransportadas <= 0 ? 1 : qtddPessoasTransportadas;
@@ -28,7 +28,7 @@ export function calcularTransporteColetivo(
   kmMedioOnibus: number,
   qtddViagensMetroOuTremSemana: number,
   kmMedioMetroOuTrem: number
-) {
+): number {
   return (
     (qtddViagensOnibusSemana * kmMedioOnibus * Fator.Onibus +
       qtddViagensMetroOuTremSemana * kmMedioMetroOuTrem * Fator.MetroOuTrem) *
@@ -40,7 +40,7 @@ export function calcularViagensAereas(
   qtddViagensCurtaDistancia: number,
   qtddViagensMediaDistancia: number,
   qtddViagensLongaDistancia: number
-) {
+): number {
   const kmCurtaDistancia = 1000;
   const kmMediaDistancia = 3700;
   const kmLongaDistancia = 5000;
@@ -90,7 +90,7 @@ export function calcularAlimentacao(
   consumoCarneSuinaSemana: number,
   consumoLeiteSemana: number,
   consumoOvoSemana: number
-) {
+): number {
   const carneBovina =
     consumoCarneBovinaSemana * Fator.CarneBovina * SEMANAS_ANO;
   const carneFrango =
@@ -102,3 +102,4 @@ export function calcularAlimentacao(
     ? carneBovina + carneFrango + carneSuina + leite + ovo
     : 0;
 }
+
