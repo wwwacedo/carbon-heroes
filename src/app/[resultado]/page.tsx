@@ -7,6 +7,7 @@ import {
   calcularTransporteColetivo,
   calcularViagensAereas,
 } from "@/lib/calc";
+import { Leaf } from "lucide-react";
 
 // http://localhost:3000/resultado?nome=Mariana&p1=true&p2=2&p3=50&p4=10&p7=true&p8=2&p9=4&p10=true&p11=6&p12=5&p13=true&p15=1&p16=1&p17=30&p18=2&p19=false&p21=true&p22=21&p23=true&p24=0.2&p25=1.4&p27=1&p28=7
 
@@ -218,10 +219,25 @@ export default async function ResultadoPage({
   };
 
   return (
-    <main className="flex flex-col gap-4 items-center min-h-screen bg-gray-100 p-4">
-      <h2 className="font-semibold py-2 text-lg">Resultados</h2>
-      <CardHero {...resumoCard} />
-			<h2 className="font-semibold py-2 text-lg">Detalhes</h2>
+    <main className="flex flex-col gap-4 items-center min-h-screen bg-gray-50 p-4">
+      <div className="container px-4 md:px-6">
+        <div className="flex flex-col items-center space-y-4 text-center">
+          <div className="space-y-2 mb-2">
+            <div className="inline-block rounded-lg bg-green-100 p-2">
+              <Leaf className="h-6 w-6 text-green-600" />
+            </div>
+            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
+              Carbon Heroes
+            </h1>
+            <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
+						Acompanhe a sua pegada de carbono e tenha um impacto positivo no
+						ambiente.
+            </p>
+          </div>
+          <CardHero {...resumoCard} />
+        </div>
+      </div>
+      <h2 className="font-semibold py-2 text-lg">Detalhes</h2>
     </main>
   );
 }
