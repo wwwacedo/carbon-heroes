@@ -4,15 +4,21 @@ const SEMANAS_ANO = 52;
 const MESES_ANO = 12;
 
 export function calcularTransporteIndividual(
+  temCarro: boolean,
   qtddPessoasTransportadas: number,
   consumoSemanalGasolina: number, // em litros
   consumoSemanalEtanol: number, // em litros
   consumoSemanalDiesel: number, // em litros
   consumoSemanalGNV: number // em m3
 ): number {
+  if (!temCarro) {
+    return 0;
+  }
+
   // Prevenindo divisão por zero
   const qtddPessoas =
     qtddPessoasTransportadas <= 0 ? 1 : qtddPessoasTransportadas;
+
   return (
     ((consumoSemanalGasolina * Fator.Gasolina +
       consumoSemanalEtanol * Fator.Etanol +
@@ -24,19 +30,31 @@ export function calcularTransporteIndividual(
 }
 
 export function calcularTransporteColetivo(
+  usaOnibus: boolean,
   qtddViagensOnibusSemana: number,
   kmMedioOnibus: number,
+  usaMetroOuTrem: boolean,
   qtddViagensMetroOuTremSemana: number,
   kmMedioMetroOuTrem: number
 ): number {
-  return (
-    (qtddViagensOnibusSemana * kmMedioOnibus * Fator.Onibus +
-      qtddViagensMetroOuTremSemana * kmMedioMetroOuTrem * Fator.MetroOuTrem) *
-    SEMANAS_ANO
-  );
+
+	if (!usaOnibus && !usaMetroOuTrem) {
+		return 0;
+	}
+
+  const onibusSemanal = usaOnibus
+    ? qtddViagensOnibusSemana * kmMedioOnibus * Fator.Onibus
+    : 0;
+
+  const metroOuTremSemanal = usaMetroOuTrem
+    ? qtddViagensMetroOuTremSemana * kmMedioMetroOuTrem * Fator.MetroOuTrem
+    : 0;
+
+  return (onibusSemanal + metroOuTremSemanal) * SEMANAS_ANO;
 }
 
 export function calcularViagensAereas(
+  viajouNosUltimos12Meses: boolean,
   qtddViagensCurtaDistancia: number,
   qtddViagensMediaDistancia: number,
   qtddViagensLongaDistancia: number
@@ -45,20 +63,30 @@ export function calcularViagensAereas(
   const kmMediaDistancia = 3700;
   const kmLongaDistancia = 5000;
   const viagemIdaEVolta = 2;
-  return (
+
+  if (!viajouNosUltimos12Meses) {
+    return 0;
+  }
+
+  const viagensCurtaDistancia =
     qtddViagensCurtaDistancia *
-      viagemIdaEVolta *
-      kmCurtaDistancia *
-      Fator.AviaoCurtaDistancia +
+    viagemIdaEVolta *
+    kmCurtaDistancia *
+    Fator.AviaoCurtaDistancia;
+
+  const viagensMediaDistancia =
     qtddViagensMediaDistancia *
-      viagemIdaEVolta *
-      kmMediaDistancia *
-      Fator.AviaoMediaDistancia +
+    viagemIdaEVolta *
+    kmMediaDistancia *
+    Fator.AviaoMediaDistancia;
+
+  const viagensLongaDistancia =
     qtddViagensLongaDistancia *
-      viagemIdaEVolta *
-      kmLongaDistancia *
-      Fator.AviaoLongaDistancia
-  );
+    viagemIdaEVolta *
+    kmLongaDistancia *
+    Fator.AviaoLongaDistancia;
+
+  return viagensCurtaDistancia + viagensMediaDistancia + viagensLongaDistancia;
 }
 
 export function calcularEnergiaEmCasa(
@@ -72,15 +100,19 @@ export function calcularEnergiaEmCasa(
   // Prevenindo divisão por zero
   const qtddPessoas = qtddPessoasCasa <= 0 ? 1 : qtddPessoasCasa;
   const duracaoBotijao = duracaoBotijaoMeses <= 0 ? 1 : duracaoBotijaoMeses;
-  const energiaEletrica =
+  
+	const energiaEletrica =
     (consumoMensalKWh * Fator.EnergiaEletrica * MESES_ANO) / qtddPessoas;
-  const botijaoDeGas = usaBotijaoGas
+  
+		const botijaoDeGas = usaBotijaoGas
     ? (Fator.BotijaoDeGas / duracaoBotijao) * MESES_ANO
     : 0;
-  const gasEncanado = usaGasEncanado
+  
+		const gasEncanado = usaGasEncanado
     ? consumoMensalGasEncanado * Fator.GasEncanado * MESES_ANO
     : 0;
-  return energiaEletrica + botijaoDeGas + gasEncanado;
+  
+		return energiaEletrica + botijaoDeGas + gasEncanado;
 }
 
 export function calcularAlimentacao(
@@ -102,4 +134,3 @@ export function calcularAlimentacao(
     ? carneBovina + carneFrango + carneSuina + leite + ovo
     : 0;
 }
-

@@ -45,41 +45,133 @@ export default async function ResultadoPage({
     p28?: string;
   }>;
 }) {
-
   const data = await searchParams;
-	const respostas = {
-		nome: data.nome,
-		p1: data.p1 ? Boolean(data.p1) : true,
-		p2: data.p2 ? Number(data.p2) : 0,
-		p3: data.p3 ? Number(data.p3) : 0,
-		p4: data.p4 ? Number(data.p4) : 0,
-		p5: data.p5 ? Number(data.p5) : 0,
-		p6: data.p6 ? Number(data.p6) : 0,
-		p7: data.p7 ? Boolean(data.p7) : true,
-		p8: data.p8 ? Number(data.p8) : 0,
-		p9: data.p9 ? Number(data.p9) : 0,
-		p10: data.p10 ? Boolean(data.p10) : true,
-		p11: data.p11 ? Number(data.p11) : 0,
-		p12: data.p12 ? Number(data.p12) : 0,
-		p13: data.p13 ? Boolean(data.p13) : true,
-		p14: data.p14 ? Number(data.p14) : 0,
-		p15: data.p15 ? Number(data.p15) : 0,
-		p16: data.p16 ? Number(data.p16) : 0,
-		p17: data.p17 ? Number(data.p17) : 0,
-		p18: data.p18 ? Number(data.p18) : 0,
-		p19: data.p19 ? Boolean(data.p19) : true,
-		p20: data.p20 ? Number(data.p20) : 0,
-		p21: data.p21 ? Boolean(data.p21) : true,
-		p22: data.p22 ? Number(data.p22) : 0,
-		p23: data.p23 ? Boolean(data.p23) : true,
-		p24: data.p24 ? Number(data.p24) : 0,
-		p25: data.p25 ? Number(data.p25) : 0,
-		p26: data.p26 ? Number(data.p26) : 0,
-		p27: data.p27 ? Number(data.p27) : 0,
-		p28: data.p28 ? Number(data.p28) : 0,
-	};
+  const respostas = {
+    nome: data.nome,
+    p1: data.p1 ? Boolean(data.p1) : true,
+    p2: data.p2 ? Number(data.p2) : 0,
+    p3: data.p3 ? Number(data.p3) : 0,
+    p4: data.p4 ? Number(data.p4) : 0,
+    p5: data.p5 ? Number(data.p5) : 0,
+    p6: data.p6 ? Number(data.p6) : 0,
+    p7: data.p7 ? Boolean(data.p7) : true,
+    p8: data.p8 ? Number(data.p8) : 0,
+    p9: data.p9 ? Number(data.p9) : 0,
+    p10: data.p10 ? Boolean(data.p10) : true,
+    p11: data.p11 ? Number(data.p11) : 0,
+    p12: data.p12 ? Number(data.p12) : 0,
+    p13: data.p13 ? Boolean(data.p13) : true,
+    p14: data.p14 ? Number(data.p14) : 0,
+    p15: data.p15 ? Number(data.p15) : 0,
+    p16: data.p16 ? Number(data.p16) : 0,
+    p17: data.p17 ? Number(data.p17) : 0,
+    p18: data.p18 ? Number(data.p18) : 0,
+    p19: data.p19 ? Boolean(data.p19) : true,
+    p20: data.p20 ? Number(data.p20) : 0,
+    p21: data.p21 ? Boolean(data.p21) : true,
+    p22: data.p22 ? Number(data.p22) : 0,
+    p23: data.p23 ? Boolean(data.p23) : true,
+    p24: data.p24 ? Number(data.p24) : 0,
+    p25: data.p25 ? Number(data.p25) : 0,
+    p26: data.p26 ? Number(data.p26) : 0,
+    p27: data.p27 ? Number(data.p27) : 0,
+    p28: data.p28 ? Number(data.p28) : 0,
+  };
 
-	// ALIMENTAÇÃO
+  // TRANSPORTE INDIVIDUAL - p1 a p6
+  console.log("Você tem carro?", respostas.p1);
+  console.log(
+    "Quantas pessoas em média são transportadas no seu carro?",
+    respostas.p2
+  );
+  console.log(
+    "Qual o seu consumo semanal de gasolina? (em litros)",
+    respostas.p3
+  );
+  console.log(
+    "Qual o seu consumo semanal de etanol? (em litros)",
+    respostas.p4
+  );
+  console.log(
+    "Qual o seu consumo semanal de diesel? (em litros)",
+    respostas.p5
+  );
+  console.log("Qual o seu consumo semanal de GNV? (em m3)", respostas.p6);
+
+  const transporteIndividual = calcularTransporteIndividual(
+    respostas.p1,
+    respostas.p2,
+    respostas.p3,
+    respostas.p4,
+    respostas.p5,
+    respostas.p6
+  );
+
+  // TRANSPORTE COLETIVO - p7 a p12
+  console.log("Você usa ônibus?", respostas.p7);
+  console.log("Quantas viagens de ônibus você faz por semana?", respostas.p8);
+  console.log(
+    "Qual a distância média percorrida por viagem de ônibus?",
+    respostas.p9
+  );
+  console.log("Você usa metrô ou trem?", respostas.p10);
+  console.log(
+    "Quantas viagens de metrô ou trem você faz por semana?",
+    respostas.p11
+  );
+  console.log(
+    "Qual a distância média percorrida por viagem de metrô ou trem?",
+    respostas.p12
+  );
+
+  const transporteColetivo = calcularTransporteColetivo(
+    respostas.p7,
+    respostas.p8,
+    respostas.p9,
+    respostas.p10,
+    respostas.p11,
+    respostas.p12
+  );
+
+  // VIAGENS AÉREAS - p13 a p16
+  console.log("Você viajou nos últimos 12 meses?", respostas.p13);
+  console.log(
+    "Quantas viagens de curta distância você fez nos últimos 12 meses?",
+    respostas.p14
+  );
+  console.log(
+    "Quantas viagens de média distância você fez nos últimos 12 meses?",
+    respostas.p15
+  );
+  console.log(
+    "Quantas viagens de longa distância você fez nos últimos 12 meses?",
+    respostas.p16
+  );
+
+  // ENERGIA EM CASA 17 a 22
+  console.log(
+    "Qual é o seu consumo mensal de energia elétrica (em kWh)?",
+    respostas.p17
+  );
+  console.log("Quantas pessoas moram na sua casa?", respostas.p18);
+  console.log("Você usa botijão de gás em casa?", respostas.p19);
+  console.log(
+    "Quantos meses dura um botijão de gás na sua casa?",
+    respostas.p20
+  );
+  console.log("Você usa gás encanado em casa?", respostas.p21);
+  console.log("Consumo de gás encanado mensal?", respostas.p22);
+
+  const energiaEmCasa = calcularEnergiaEmCasa(
+    respostas.p17,
+    respostas.p18,
+    respostas.p19,
+    respostas.p20,
+    respostas.p21,
+    respostas.p22
+  );
+
+  // ALIMENTAÇÃO
   console.log("Você consome produtos de origem animal?", respostas.p23);
   console.log("Carne bovina:", respostas.p24);
   console.log("Carne de frango:", respostas.p25);
@@ -87,28 +179,46 @@ export default async function ResultadoPage({
   console.log("Leite de vaca:", respostas.p27);
   console.log("Ovos:", respostas.p28);
 
-	const alimentacao = calcularAlimentacao(respostas.p23, respostas.p24, respostas.p25, respostas.p26, respostas.p27, respostas.p28);
+  const alimentacao = calcularAlimentacao(
+    respostas.p23,
+    respostas.p24,
+    respostas.p25,
+    respostas.p26,
+    respostas.p27,
+    respostas.p28
+  );
 
-	console.log("Alimentação:", alimentacao, "kg de CO2/ano");
+  const viagensAereas = calcularViagensAereas(
+    respostas.p13,
+    respostas.p14,
+    respostas.p15,
+    respostas.p16
+  );
 
+  console.log(
+    "\nTransporte individual:",
+    transporteIndividual,
+    "kg de CO2/ano"
+  );
+  console.log("Transporte coletivo:", transporteColetivo, "kg de CO2/ano");
+  console.log("Viagens aéreas:", viagensAereas, "kg de CO2/ano");
+  console.log("Energia em casa:", energiaEmCasa, "kg de CO2/ano");
+  console.log("Alimentação:", alimentacao, "kg de CO2/ano");
 
-	// ENERGIA EM CASA
-	console.log("Qual é o seu consumo mensal de energia elétrica (em kWh)?", respostas.p17);
-	console.log("Quantas pessoas moram na sua casa?", respostas.p18);
-	console.log("Você usa botijão de gás em casa?", respostas.p19);
-	console.log("Quantos meses dura um botijão de gás na sua casa?", respostas.p20);
-	console.log("Você usa gás encanado em casa?", respostas.p21);
-	console.log("Consumo de gás encanado mensal?", respostas.p22);
+  const totalTransportes =
+    transporteIndividual + transporteColetivo + viagensAereas;
+  const totalGeral = totalTransportes + energiaEmCasa + alimentacao;
 
-	const energiaEmCasa = calcularEnergiaEmCasa(respostas.p17, respostas.p18, respostas.p19, respostas.p20, respostas.p21, respostas.p22);
-
-	console.log("Energia em casa:", energiaEmCasa, "kg de CO2/ano");
-
-	
+  const resumoCard = {
+    totalGeral,
+    totalTransportes,
+    energiaEmCasa,
+    alimentacao,
+  };
 
   return (
     <main className="flex flex-col gap-4 items-center justify-center min-h-screen bg-gradient-to-br from-green-200 to-gray-300 p-4">
-      <CardHero nome={respostas.nome} />
+      <CardHero nome={respostas.nome} {...resumoCard} />
     </main>
   );
 }
