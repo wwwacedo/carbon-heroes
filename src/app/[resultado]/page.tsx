@@ -218,8 +218,10 @@ export default async function ResultadoPage({
   };
 
   return (
-    <main className="flex flex-col gap-4 items-center justify-center min-h-screen bg-gradient-to-br from-green-200 to-gray-300 p-4">
+    <main className="flex flex-col gap-4 items-center min-h-screen bg-gray-100 p-4">
+      <h2 className="font-semibold py-2 text-lg">Resultados</h2>
       <CardHero {...resumoCard} />
+			<h2 className="font-semibold py-2 text-lg">Detalhes</h2>
     </main>
   );
 }
