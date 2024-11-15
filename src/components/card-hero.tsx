@@ -20,8 +20,8 @@ export const CardHero: React.FC<CardHeroProps> = ({
   alimentacao,
 }) => {
   return (
-    <Card className="w-full max-w-sm bg-gray-50 rounded-xl overflow-hidden shadow-xl border-8 border-green-600">
-      <div className="py-2 px-4">
+    <Card className="w-full max-w-sm bg-gray-50 rounded-xl overflow-hidden shadow-xl border-[6px] border-gray-700">
+      <div className="py-2 px-4 border-b border-gray-500">
         <div className="flex gap-2 items-center">
           <div className="relative flex items-center justify-center h-[50px] w-[50px]">
             <Image
@@ -38,7 +38,7 @@ export const CardHero: React.FC<CardHeroProps> = ({
         </div>
       </div>
 
-      <CardContent className="p-4 h-full flex gap-4 flex-col bg-gray-200">
+      <CardContent className="p-3 h-full flex gap-4 flex-col bg-gray-400">
         <PieChartSection total={kgParaTons(total)} transportes={kgParaTons(transportes)} energia={kgParaTons(energia)} alimentacao={kgParaTons(alimentacao)}/>
 
         <div className="space-y-2 text-sm">

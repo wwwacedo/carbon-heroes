@@ -18,7 +18,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { kgParaTons } from "@/lib/calc";
 
 export function PieChartSection({
   total,
@@ -33,21 +32,27 @@ export function PieChartSection({
 }) {
   const chartData = [
     {
-      categories: "Transporte",
+      category: "Transporte",
       tonsAno: transportes,
       fill: "var(--color-transporte)",
     },
     {
-      categories: "Energia",
+      category: "Energia",
       tonsAno: energia,
       fill: "var(--color-energia)",
     },
     {
-      categories: "Alimentação",
+      category: "Alimentação",
       tonsAno: alimentacao,
       fill: "var(--color-alimentacao)",
     },
   ];
+
+  const maior = Math.max(transportes, energia, alimentacao);
+  const nomeDoMaior = chartData.find(
+    (item) => item.tonsAno === maior
+  )?.category;
+  const porcentagem = (maior / (total / 100)).toFixed(0);
 
   const chartConfig = {
     tonsAno: {
@@ -108,7 +113,7 @@ export function PieChartSection({
             <Pie
               data={chartData}
               dataKey="tonsAno"
-              nameKey="categories"
+              nameKey="category"
               innerRadius={60}
               strokeWidth={5}
             >
@@ -134,7 +139,7 @@ export function PieChartSection({
                           y={(viewBox.cy || 0) + 24}
                           className="fill-muted-foreground"
                         >
-                          tons CO2 / ano
+                          tons CO2/ano
                         </tspan>
                       </text>
                     );
@@ -147,10 +152,11 @@ export function PieChartSection({
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
         <div className="flex items-center gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+          {nomeDoMaior} corresponde a {porcentagem}% do total{" "}
+          <TrendingUp className="h-5 w-5" />
         </div>
         <div className="leading-none text-muted-foreground">
-          Seus hábitos em toneladas de CO2 / ano
+          Seus hábitos em toneladas de CO2/ano
         </div>
       </CardFooter>
     </Card>
