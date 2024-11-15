@@ -1,4 +1,4 @@
-import CardHero from "@/components/card-hero";
+import { CardHero } from "@/components/card-hero";
 import React from "react";
 import {
   calcularAlimentacao,
@@ -210,6 +210,7 @@ export default async function ResultadoPage({
   const totalGeral = totalTransportes + energiaEmCasa + alimentacao;
 
   const resumoCard = {
+    usuario: respostas.nome,
     totalGeral,
     totalTransportes,
     energiaEmCasa,
@@ -218,7 +219,7 @@ export default async function ResultadoPage({
 
   return (
     <main className="flex flex-col gap-4 items-center justify-center min-h-screen bg-gradient-to-br from-green-200 to-gray-300 p-4">
-      <CardHero nome={respostas.nome} {...resumoCard} />
+      <CardHero {...resumoCard} />
     </main>
   );
 }

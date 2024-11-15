@@ -2,8 +2,23 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Leaf, Car, Zap, Beef } from "lucide-react";
 import Image from "next/image";
 import { PieChartSection } from "./pie-chart";
+import { kgParaTons } from "@/lib/calc";
 
-export default function CardHero({ nome }: { nome: string }) {
+type CardHeroProps = {
+  usuario: string;
+  totalGeral: number;
+  totalTransportes: number;
+  energiaEmCasa: number;
+  alimentacao: number;
+};
+
+export const CardHero: React.FC<CardHeroProps> = ({
+  usuario,
+  totalGeral,
+  totalTransportes,
+  energiaEmCasa,
+  alimentacao,
+}) => {
   return (
     <Card className="w-full max-w-sm bg-white  bg-gradient-to-br from-green-500 to-green-600 rounded-xl overflow-hidden shadow-xl">
       <div className="py-2 px-4">
@@ -18,21 +33,22 @@ export default function CardHero({ nome }: { nome: string }) {
           </div>
           <div className="h-[50px]">
             <h4 className="text-sm text-foreground/80">Carbon Heroes</h4>
-            <h1 className="text-xl font-bold text-white">{nome}</h1>
+            <h1 className="text-xl font-bold text-white">{usuario}</h1>
           </div>
         </div>
       </div>
 
       <CardContent className="p-4 h-full flex gap-4 flex-col bg-gray-200">
-        
-				<PieChartSection/>
+        <PieChartSection />
 
         <div className="space-y-2 text-sm">
           <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
             <span className="font-semibold flex items-center">
               <Leaf className="w-5 h-5 mr-2 text-green-500" /> Pegada de Carbono
             </span>
-            <span className="font-bold">2.5 tons/year</span>
+            <span className="font-bold">
+              {kgParaTons(totalGeral)} tons/year
+            </span>
           </div>
           <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
             <span className="font-semibold flex items-center">
@@ -56,4 +72,4 @@ export default function CardHero({ nome }: { nome: string }) {
       </CardContent>
     </Card>
   );
-}
+};
