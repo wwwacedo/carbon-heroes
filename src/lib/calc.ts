@@ -3,6 +3,10 @@ import { Fator } from "../data/types";
 const SEMANAS_ANO = 52;
 const MESES_ANO = 12;
 
+export function kgParaTons(kg: number) {
+  return (kg / 1000).toFixed(2);
+}
+
 export function calcularTransporteIndividual(
   temCarro: boolean,
   qtddPessoasTransportadas: number,
@@ -37,10 +41,9 @@ export function calcularTransporteColetivo(
   qtddViagensMetroOuTremSemana: number,
   kmMedioMetroOuTrem: number
 ): number {
-
-	if (!usaOnibus && !usaMetroOuTrem) {
-		return 0;
-	}
+  if (!usaOnibus && !usaMetroOuTrem) {
+    return 0;
+  }
 
   const onibusSemanal = usaOnibus
     ? qtddViagensOnibusSemana * kmMedioOnibus * Fator.Onibus
@@ -100,19 +103,19 @@ export function calcularEnergiaEmCasa(
   // Prevenindo divisão por zero
   const qtddPessoas = qtddPessoasCasa <= 0 ? 1 : qtddPessoasCasa;
   const duracaoBotijao = duracaoBotijaoMeses <= 0 ? 1 : duracaoBotijaoMeses;
-  
-	const energiaEletrica =
+
+  const energiaEletrica =
     (consumoMensalKWh * Fator.EnergiaEletrica * MESES_ANO) / qtddPessoas;
-  
-		const botijaoDeGas = usaBotijaoGas
+
+  const botijaoDeGas = usaBotijaoGas
     ? (Fator.BotijaoDeGas / duracaoBotijao) * MESES_ANO
     : 0;
-  
-		const gasEncanado = usaGasEncanado
+
+  const gasEncanado = usaGasEncanado
     ? consumoMensalGasEncanado * Fator.GasEncanado * MESES_ANO
     : 0;
-  
-		return energiaEletrica + botijaoDeGas + gasEncanado;
+
+  return energiaEletrica + botijaoDeGas + gasEncanado;
 }
 
 export function calcularAlimentacao(
