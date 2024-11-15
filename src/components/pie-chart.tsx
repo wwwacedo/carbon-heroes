@@ -64,7 +64,7 @@ export function PieChartSection() {
 	
 	const mesAtual = new Date().getMonth();
 	const nomeMesAtual = meses[mesAtual];
-	const nomeMesAnterior = mesAtual == 0 ? "Dezembro" : meses[mesAtual - 1];
+	const nomeMesAnterior = mesAtual == 11 ? "Janeiro" : meses[mesAtual + 1];
 
   return (
     <Card className="flex flex-col">
