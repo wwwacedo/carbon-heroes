@@ -35,12 +35,12 @@ export function PieChartSection({
     {
       categories: "Transporte",
       tonsAno: transportes,
-      fill: "var(--color-energia)",
+      fill: "var(--color-transporte)",
     },
     {
       categories: "Energia",
       tonsAno: energia,
-      fill: "var(--color-transporte)",
+      fill: "var(--color-energia)",
     },
     {
       categories: "Alimentação",
