@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Footprints, Car, Zap, Beef } from "lucide-react";
+import { Footprints, Car, Zap, Beef, Leaf, Utensils, Home } from "lucide-react";
 import Image from "next/image";
 import { PieChartSection } from "./pie-chart";
 import { kgParaTons } from "@/lib/calc";
@@ -18,58 +18,56 @@ export const CardHero: React.FC<CardHeroProps> = ({
   transportes,
   energia,
   alimentacao,
-}) => {
-  return (
-    <Card className="w-full max-w-sm bg-gray-50 rounded-xl overflow-hidden shadow-xl border-[6px] border-gray-700">
-      <div className="py-2 px-4 border-b border-gray-500">
-        <div className="flex gap-2 items-center">
-          <div className="relative flex items-center justify-center h-[50px] w-[50px]">
-            <Image
-              src="/carbon.svg"
-              alt="Carbon Neutral"
-              width={80}
-              height={80}
-            />
+}) => {return (
+    
+      <Card className="w-full max-w-md overflow-hidden">
+        <div className="p-4 border-b flex items-center gap-2">
+          <div className="w-8 h-8 rounded bg-green-100 flex items-center justify-center">
+            <Leaf className="w-5 h-5 text-green-600" />
           </div>
-          <div className="h-[50px] flex flex-col justify-between">
-            <h4 className="text-[12px] text-foreground/80">Carbon Heroes</h4>
-            <h2 className="text-xl font-bold">{usuario}</h2>
+          <div>
+            <div className="text-sm text-muted-foreground">Carbon Heroes</div>
+            <div className="font-semibold">{usuario}</div>
           </div>
         </div>
-      </div>
-
-      <CardContent className="p-3 h-full flex gap-4 flex-col bg-gray-400">
-        <PieChartSection total={kgParaTons(total)} transportes={kgParaTons(transportes)} energia={kgParaTons(energia)} alimentacao={kgParaTons(alimentacao)}/>
-
-        <div className="space-y-2 text-sm">
-          <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
-            <span className="font-semibold flex items-center">
-              <Footprints className="w-5 h-5 mr-2 text-green-500" /> Pegada de Carbono
-            </span>
-            <span className="font-bold">
-              {kgParaTons(total)} tons/ano
-            </span>
+  
+  
+          <PieChartSection total={kgParaTons(total)} transportes={kgParaTons(transportes)} energia={kgParaTons(energia)} alimentacao={kgParaTons(alimentacao)}/>
+          
+          <div className="p-6 space-y-3">
+            <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+              <div className="flex items-center gap-3">
+                <Leaf className="w-5 h-5 text-green-600" />
+                <span>CO2 total</span>
+              </div>
+              <span className="font-medium">{kgParaTons(total)} tons/ano</span>
+            </div>
+            
+            <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+              <div className="flex items-center gap-3">
+                <Car className="w-5 h-5 text-blue-600" />
+                <span>Transporte</span>
+              </div>
+              <span className="font-medium">{kgParaTons(transportes)} tons/ano</span>
+            </div>
+            
+            <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+              <div className="flex items-center gap-3">
+                <Home className="w-5 h-5 text-yellow-600" />
+                <span>Energia</span>
+              </div>
+              <span className="font-medium">{kgParaTons(energia)} tons/ano</span>
+            </div>
+            
+            <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+              <div className="flex items-center gap-3">
+                <Utensils className="w-5 h-5 text-red-600" />
+                <span>Alimentação</span>
+              </div>
+              <span className="font-medium">{kgParaTons(alimentacao)} tons/ano</span>
+            </div>
           </div>
-          <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
-            <span className="font-semibold flex items-center">
-              <Car className="w-5 h-5 mr-2 text-blue-500" /> Transporte
-            </span>
-            <span className="font-bold">{kgParaTons(transportes)} tons/ano</span>
-          </div>
-          <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
-            <span className="font-semibold flex items-center">
-              <Zap className="w-5 h-5 mr-2 text-yellow-500" /> Energia em Casa
-            </span>
-            <span className="font-bold">{kgParaTons(energia)} tons/ano</span>
-          </div>
-          <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
-            <span className="font-semibold flex items-center">
-              <Beef className="w-5 h-5 mr-2 text-red-500" /> Alimentação
-            </span>
-            <span className="font-bold">{kgParaTons(alimentacao)} tons/ano</span>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
-};
+      
+      </Card>
+  )
+}

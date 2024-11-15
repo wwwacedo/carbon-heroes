@@ -93,10 +93,12 @@ export function PieChartSection({
   const nomeMesAnterior = mesAtual == 11 ? "Janeiro" : meses[mesAtual + 1];
 
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col border-none shadow-none">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Sua Pegada de Carbono</CardTitle>
-        <CardDescription>
+        <CardTitle className="font-medium">
+          Seus hábitos em toneladas de CO2/ano
+        </CardTitle>
+        <CardDescription className="text-sm text-muted-foreground">
           {nomeMesAnterior} {anoAtual - 1} - {nomeMesAtual} {anoAtual}
         </CardDescription>
       </CardHeader>
@@ -154,9 +156,6 @@ export function PieChartSection({
         <div className="flex items-center gap-2 font-medium leading-none">
           {nomeDoMaior} corresponde a {porcentagem}% do total{" "}
           <TrendingUp className="h-5 w-5" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Seus hábitos em toneladas de CO2/ano
         </div>
       </CardFooter>
     </Card>
