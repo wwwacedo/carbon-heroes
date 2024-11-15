@@ -211,9 +211,9 @@ export default async function ResultadoPage({
 
   const resumoCard = {
     usuario: respostas.nome,
-    totalGeral,
-    totalTransportes,
-    energiaEmCasa,
+    total: totalGeral,
+    transportes: totalTransportes,
+    energia: energiaEmCasa,
     alimentacao,
   };
 

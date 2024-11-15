@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { TrendingUp } from "lucide-react"
-import { Label, Pie, PieChart } from "recharts"
+import * as React from "react";
+import { TrendingUp } from "lucide-react";
+import { Label, Pie, PieChart } from "recharts";
 
 import {
   Card,
@@ -11,66 +11,89 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"
-const chartData = [
-  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
-  { browser: "firefox", visitors: 287, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 190, fill: "var(--color-other)" },
-]
+} from "@/components/ui/chart";
+import { kgParaTons } from "@/lib/calc";
 
-const chartConfig = {
-  visitors: {
-    label: "Visitors",
-  },
-  chrome: {
-    label: "Chrome",
-    color: "hsl(var(--chart-1))",
-  },
-  safari: {
-    label: "Safari",
-    color: "hsl(var(--chart-2))",
-  },
-  firefox: {
-    label: "Firefox",
-    color: "hsl(var(--chart-3))",
-  },
-  edge: {
-    label: "Edge",
-    color: "hsl(var(--chart-4))",
-  },
-  other: {
-    label: "Other",
-    color: "hsl(var(--chart-5))",
-  },
-} satisfies ChartConfig
+export function PieChartSection({
+  total,
+  transportes,
+  energia,
+  alimentacao,
+}: {
+  total: number;
+  transportes: number;
+  energia: number;
+  alimentacao: number;
+}) {
+  const chartData = [
+    {
+      categories: "Transporte",
+      tonsAno: transportes,
+      fill: "var(--color-energia)",
+    },
+    {
+      categories: "Energia",
+      tonsAno: energia,
+      fill: "var(--color-transporte)",
+    },
+    {
+      categories: "Alimentação",
+      tonsAno: alimentacao,
+      fill: "var(--color-alimentacao)",
+    },
+  ];
 
-export function PieChartSection() {
-  const totalVisitors = React.useMemo(() => {
-    return chartData.reduce((acc, curr) => acc + curr.visitors, 0)
-  }, [])
-	const anoAtual = new Date().getFullYear();
-	const meses = [
-		"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-		"Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
-	];
-	
-	const mesAtual = new Date().getMonth();
-	const nomeMesAtual = meses[mesAtual];
-	const nomeMesAnterior = mesAtual == 11 ? "Janeiro" : meses[mesAtual + 1];
+  const chartConfig = {
+    tonsAno: {
+      label: "tons CO2/ano",
+    },
+    transporte: {
+      label: "Transporte",
+      color: "hsl(var(--chart-1))",
+    },
+    energia: {
+      label: "Energia",
+      color: "hsl(var(--chart-2))",
+    },
+    alimentacao: {
+      label: "Alimentação",
+      color: "hsl(var(--chart-3))",
+    },
+  } satisfies ChartConfig;
+
+  const anoAtual = new Date().getFullYear();
+  const meses = [
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro",
+  ];
+
+  const mesAtual = new Date().getMonth();
+  const nomeMesAtual = meses[mesAtual];
+  const nomeMesAnterior = mesAtual == 11 ? "Janeiro" : meses[mesAtual + 1];
 
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
         <CardTitle>Sua Pegada de Carbono</CardTitle>
-        <CardDescription>{nomeMesAnterior} {anoAtual - 1} - {nomeMesAtual} {anoAtual}</CardDescription>
+        <CardDescription>
+          {nomeMesAnterior} {anoAtual - 1} - {nomeMesAtual} {anoAtual}
+        </CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
@@ -84,8 +107,8 @@ export function PieChartSection() {
             />
             <Pie
               data={chartData}
-              dataKey="visitors"
-              nameKey="browser"
+              dataKey="tonsAno"
+              nameKey="categories"
               innerRadius={60}
               strokeWidth={5}
             >
@@ -104,17 +127,17 @@ export function PieChartSection() {
                           y={viewBox.cy}
                           className="fill-foreground text-3xl font-bold"
                         >
-                          {totalVisitors.toLocaleString()}
+                          {total}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
                           className="fill-muted-foreground"
                         >
-                          Visitors
+                          tons CO2 / ano
                         </tspan>
                       </text>
-                    )
+                    );
                   }
                 }}
               />
@@ -127,9 +150,9 @@ export function PieChartSection() {
           Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
         </div>
         <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
+          Seus hábitos em toneladas de CO2 / ano
         </div>
       </CardFooter>
     </Card>
-  )
+  );
 }

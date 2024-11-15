@@ -1,22 +1,22 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Leaf, Car, Zap, Beef } from "lucide-react";
+import { Footprints, Car, Zap, Beef } from "lucide-react";
 import Image from "next/image";
 import { PieChartSection } from "./pie-chart";
 import { kgParaTons } from "@/lib/calc";
 
 type CardHeroProps = {
   usuario: string;
-  totalGeral: number;
-  totalTransportes: number;
-  energiaEmCasa: number;
+  total: number;
+  transportes: number;
+  energia: number;
   alimentacao: number;
 };
 
 export const CardHero: React.FC<CardHeroProps> = ({
   usuario,
-  totalGeral,
-  totalTransportes,
-  energiaEmCasa,
+  total,
+  transportes,
+  energia,
   alimentacao,
 }) => {
   return (
@@ -39,34 +39,42 @@ export const CardHero: React.FC<CardHeroProps> = ({
       </div>
 
       <CardContent className="p-4 h-full flex gap-4 flex-col bg-gray-200">
-        <PieChartSection />
+        <PieChartSection
+          total={kgParaTons(total)}
+          transportes={kgParaTons(transportes)}
+          energia={kgParaTons(energia)}
+          alimentacao={kgParaTons(alimentacao)}
+        />
 
         <div className="space-y-2 text-sm">
           <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
             <span className="font-semibold flex items-center">
-              <Leaf className="w-5 h-5 mr-2 text-green-500" /> Pegada de Carbono
+              <Footprints className="w-5 h-5 mr-2 text-green-500" /> Pegada de
+              Carbono
             </span>
-            <span className="font-bold">
-              {kgParaTons(totalGeral)} tons/year
-            </span>
+            <span className="font-bold">{kgParaTons(total)} tons/ano</span>
           </div>
           <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
             <span className="font-semibold flex items-center">
               <Car className="w-5 h-5 mr-2 text-blue-500" /> Transporte
             </span>
-            <span className="font-bold">100 L/day</span>
+            <span className="font-bold">
+              {kgParaTons(transportes)} tons/ano
+            </span>
           </div>
           <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
             <span className="font-semibold flex items-center">
               <Zap className="w-5 h-5 mr-2 text-yellow-500" /> Energia em Casa
             </span>
-            <span className="font-bold">90%</span>
+            <span className="font-bold">{kgParaTons(energia)} tons/ano</span>
           </div>
           <div className="flex justify-between items-center bg-gray-50 p-2 rounded">
             <span className="font-semibold flex items-center">
               <Beef className="w-5 h-5 mr-2 text-red-500" /> Alimentação
             </span>
-            <span className="font-bold">75%</span>
+            <span className="font-bold">
+              {kgParaTons(alimentacao)} tons/ano
+            </span>
           </div>
         </div>
       </CardContent>
