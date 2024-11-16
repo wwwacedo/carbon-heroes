@@ -1,4 +1,5 @@
 import { CardHero } from "@/components/card-hero";
+import { CardDetails } from "@/components/card-details";
 import React from "react";
 import {
   calcularAlimentacao,
@@ -8,6 +9,7 @@ import {
   calcularViagensAereas,
 } from "@/lib/calc";
 import { Leaf } from "lucide-react";
+import { perguntas } from "@/data/data";
 
 // http://localhost:3000/resultado?nome=Mariana&p1=true&p2=2&p3=50&p4=10&p7=true&p8=2&p9=4&p10=true&p11=6&p12=5&p13=true&p15=1&p16=1&p17=30&p18=2&p19=false&p21=true&p22=21&p23=true&p24=0.2&p25=1.4&p27=1&p28=7
 
@@ -218,6 +220,17 @@ export default async function ResultadoPage({
     alimentacao,
   };
 
+
+  const detalhes = [
+    {
+      categoria: perguntas[0].categoria,
+      pergunta: perguntas[0].texto,
+      resposta: typeof respostas.p1 === "boolean" ? (respostas.p1 ? "Sim" : "Não") : respostas.p1,
+			unidade: perguntas[0].unidadeResposta,
+    },
+
+  ];
+
   return (
     <main className="m-auto">
       <div className="pt-4">
@@ -235,23 +248,27 @@ export default async function ResultadoPage({
             </p>
           </div>
           <section className="mt-4 py-10 w-full bg-gray-100 flex flex-col items-center">
-            <h2 className="pb-2 text-foreground/70 font-semibold text-xl">
-              Resultados
-            </h2>
+					<h2 className="text-2xl font-semibold text-center mb-8">Resultados</h2>
             <div className="w-full px-6 flex justify-center">
               <CardHero {...resumoCard} />
             </div>
           </section>
 
-					<section className="pt-10 py-10 w-full bg-gray-200 flex flex-col items-center">
-            <h2 className="pb-2 text-foreground/70 font-semibold text-xl">
-              Detalhes
-            </h2>
+          <section className="pt-10 py-10 w-full bg-gray-200 flex flex-col items-center">
+					<h2 className="text-2xl font-semibold text-center mb-8">Detalhes</h2>
             <div className="w-full px-6 flex justify-center">
-              <CardHero {...resumoCard} />
+              <div className="w-full flex flex-col gap-6 items-center">
+                {
+									detalhes.map((detalhe, index) => (
+										<CardDetails
+											key={index}
+											{...detalhe}
+										/>
+									))
+								}
+              </div>
             </div>
           </section>
-          
         </div>
       </div>
     </main>

@@ -2,13 +2,13 @@ export type Pergunta = {
   id: number;
   categoria: Categoria;
   texto: string;
-  unidadeResposta?: string;
+  unidadeResposta: Unidade;
   fatorConversao?: number;
 };
 
 export enum Categoria {
   Transporte = "Transporte",
-  EnergiaEmCasa = "Energia em Casa",
+  EnergiaEmCasa = "Energia",
   Alimentacao = "Alimentação",
 }
 
