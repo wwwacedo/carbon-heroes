@@ -219,9 +219,9 @@ export default async function ResultadoPage({
   };
 
   return (
-    <main className="flex flex-col gap-4 items-center min-h-screen bg-gray-50 p-4">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center space-y-4 text-center">
+    <main className="m-auto">
+      <div className="pt-4">
+        <div className="flex flex-col items-center text-center">
           <div className="space-y-2 mb-2">
             <div className="inline-block rounded-lg bg-green-100 p-2">
               <Leaf className="h-6 w-6 text-green-600" />
@@ -229,15 +229,31 @@ export default async function ResultadoPage({
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
               Carbon Heroes
             </h1>
-            <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl">
-						Acompanhe a sua pegada de carbono e tenha um impacto positivo no
-						ambiente.
+            <p className="mx-auto max-w-[700px] text-gray-800 md:text-xl">
+              <span className="font-semibold">{respostas.nome}</span>, acompanhe
+              a sua pegada de carbono.
             </p>
           </div>
-          <CardHero {...resumoCard} />
+          <section className="mt-4 py-10 w-full bg-gray-100 flex flex-col items-center">
+            <h2 className="pb-2 text-foreground/70 font-semibold text-xl">
+              Resultados
+            </h2>
+            <div className="w-full px-6 flex justify-center">
+              <CardHero {...resumoCard} />
+            </div>
+          </section>
+
+					<section className="pt-10 py-10 w-full bg-gray-200 flex flex-col items-center">
+            <h2 className="pb-2 text-foreground/70 font-semibold text-xl">
+              Detalhes
+            </h2>
+            <div className="w-full px-6 flex justify-center">
+              <CardHero {...resumoCard} />
+            </div>
+          </section>
+          
         </div>
       </div>
-      <h2 className="font-semibold py-2 text-lg">Detalhes</h2>
     </main>
   );
 }
