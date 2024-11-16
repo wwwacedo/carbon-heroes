@@ -91,9 +91,9 @@ export enum FatorDescricao {
   EnergiaEletrica = "0.1 kg de CO2/kWh",
   BotijaoDeGas = "37.7 kg de CO2 por número de meses",
   GasEncanado = "2.9 kg de CO2 por m3",
-  CarneBovina = "27 kg de CO2 por kg de carne",
-  CarneFrango = "6.9 kg de CO2 por kg de carne",
-  CarneSuina = "12.1 kg de CO2 por kg de carne",
-  Leite = "1.3 kg de CO2 por litro de leite",
+  CarneBovina = "27 kg de CO2 por kg de carne bovina",
+  CarneFrango = "6.9 kg de CO2 por kg de carne de frango",
+  CarneSuina = "12.1 kg de CO2 por kg de carne suína",
+  Leite = "1.3 kg de CO2 por litro de leite de vaca",
   Ovo = "0.0375 kg de CO2 por ovo produzido",
 }

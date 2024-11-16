@@ -29,12 +29,6 @@ export const perguntas: Pergunta[] = [
 		fator: Fator.Etanol,
 		fatorDescricao: FatorDescricao.Etanol,
 	},
-	{
-		id: 5,
-		categoria: Categoria.Transporte,
-		texto: "Qual o seu consumo semanal de diesel? (em litros)",
-		unidadeResposta: Unidade.Litro,
-  },
   {
     id: 5,
     categoria: Categoria.Transporte,
