@@ -171,7 +171,8 @@ export default async function ResultadoPage({
     <main className="m-auto">
       <div className="pt-4">
         <div className="flex flex-col items-center text-center">
-          <div className="space-y-2 mb-2">
+          
+					<div className="space-y-2 mb-2">
             <div className="inline-block rounded-lg bg-green-100 p-2">
               <Leaf className="h-6 w-6 text-green-600" />
             </div>
@@ -183,6 +184,7 @@ export default async function ResultadoPage({
               a sua pegada de carbono.
             </p>
           </div>
+
           <section className="mt-4 py-10 w-full bg-gray-100 flex flex-col items-center">
             <h2 className="text-2xl font-semibold text-center mb-8">
               Resultados
