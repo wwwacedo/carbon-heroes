@@ -9,6 +9,7 @@ import {
 import { Badge } from "./ui/badge";
 import { Car, Utensils, Zap } from "lucide-react";
 import { Categoria, Unidade } from "@/data/types";
+import { cn } from "@/lib/utils";
 
 type CardDetailsProps = {
   categoria:
@@ -42,16 +43,19 @@ export const CardDetails: React.FC<CardDetailsProps> = ({
     <Card className="w-full max-w-md overflow-hidden text-start">
       <CardHeader className="pb-2">
         <div className="flex items-center justify-between">
-          {IconeCategoria({ categoria })}
-          <Badge variant="secondary" className="text-xs capitalize">
+          <Badge
+            variant="secondary"
+            className={cn("text-xs capitalize text-white", CorCategoria(categoria))}
+						>
             {categoria}
           </Badge>
+						{IconeCategoria(categoria)}
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="space-y-2">
           <h3 className="font-medium text-lg">{pergunta}</h3>
-          <p className="text-2xl font-semibold text-primary">
+          <p className="text-2xl font-semibold">
             {resposta} {unidade !== "booleano" && unidade}
           </p>
         </div>
@@ -69,12 +73,22 @@ export const CardDetails: React.FC<CardDetailsProps> = ({
   );
 };
 
-const IconeCategoria = ({ categoria }: { categoria: Categoria }) => {
+const IconeCategoria = (categoria: Categoria) => {
   if (categoria === Categoria.Transporte) {
     return <Car className="h-5 w-5 text-blue-600" />;
   } else if (categoria === Categoria.EnergiaEmCasa) {
     return <Zap className="h-5 w-5 text-yellow-600" />;
   } else {
     return <Utensils className="h-5 w-5 text-red-600" />;
+  }
+};
+
+const CorCategoria = (categoria: Categoria) => {
+  if (categoria === Categoria.Transporte) {
+    return "text-blue-600";
+  } else if (categoria === Categoria.EnergiaEmCasa) {
+    return "text-yellow-600";
+  } else {
+    return "text-red-600";
   }
 };

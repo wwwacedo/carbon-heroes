@@ -6,6 +6,38 @@ export type Pergunta = {
   fatorConversao?: number;
 };
 
+export type Respostas = {
+  nome: string;
+  p1: boolean;
+  p2: number;
+  p3: number;
+  p4: number;
+  p5: number;
+  p6: number;
+  p7: boolean;
+  p8: number;
+  p9: number;
+  p10: boolean;
+  p11: number;
+  p12: number;
+  p13: boolean;
+  p14: number;
+  p15: number;
+  p16: number;
+  p17: number;
+  p18: number;
+  p19: boolean;
+  p20: number;
+  p21: boolean;
+  p22: number;
+  p23: boolean;
+  p24: number;
+  p25: number;
+  p26: number;
+  p27: number;
+  p28: number;
+};
+
 export enum Categoria {
   Transporte = "Transporte",
   EnergiaEmCasa = "Energia",
