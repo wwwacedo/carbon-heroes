@@ -88,7 +88,7 @@ export enum FatorDescricao {
   AviaoCurtaDistancia = "0.25 kg de CO2 por km por passageiro",
   AviaoMediaDistancia = "0.15 kg de CO2 por km por passageiro",
   AviaoLongaDistancia = "0.12 kg de CO2 por km por passageiro",
-  EnergiaEletrica = "0.1 kg de CO2/kWh",
+  EnergiaEletrica = "0.1 kg de CO2 por kWh",
   BotijaoDeGas = "37.7 kg de CO2 por número de meses",
   GasEncanado = "2.9 kg de CO2 por m3",
   CarneBovina = "27 kg de CO2 por kg de carne bovina",
