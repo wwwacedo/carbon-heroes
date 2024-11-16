@@ -47,15 +47,15 @@ export enum Categoria {
 
 export enum Unidade {
   Booleano = "booleano",
-  Pessoa = "pessoa(s)",
-  Litro = "litro(s)",
-  MetroCubico = "metro(s) cúbico(s)",
-  Viagem = "viagem(ns)",
+  Pessoa = "pessoa",
+  Litro = "litro",
+  MetroCubico = "metro cúbico",
+  Viagem = "viagem",
   Km = "km",
   KWh = "kWh",
-  Mes = "mes(es)",
-  Kg = "kg(s)",
-  Unidade = "unidade(s)",
+  Mes = "mes",
+  Kg = "kg",
+  Unidade = "unidade",
 }
 
 export enum Fator {

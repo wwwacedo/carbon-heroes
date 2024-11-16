@@ -46,7 +46,7 @@ export const CardDetails: React.FC<CardDetailsProps> = ({
         <div className="space-y-2">
           <h3 className="font-medium text-lg">{pergunta}</h3>
           <p className="text-2xl font-semibold">
-            {resposta} {unidade !== "booleano" && unidade}
+            {resposta} {unidade !== "booleano" && AvaliaUnidade(resposta, unidade)}
           </p>
         </div>
 
@@ -82,3 +82,32 @@ const CorCategoria = (categoria: Categoria) => {
     return "text-red-600";
   }
 };
+
+const AvaliaUnidade = (valor: string | number, unidade: Unidade) => {
+	const valorNumber = Number(valor);
+	if (valorNumber > 1 || valorNumber === 0) {
+		switch (unidade) {
+			case Unidade.Pessoa:
+				console.log("pessoas");
+				return "pessoas";
+			case Unidade.Litro:
+				return "litros";
+			case Unidade.MetroCubico:
+				return "metros cúbicos";
+			case Unidade.Viagem:
+				return "viagens";
+			case Unidade.Km:
+				return "km";
+			case Unidade.KWh:
+				return "kWh";
+			case Unidade.Mes:
+				return "meses";
+			case Unidade.Kg:
+				return "kg";
+			case Unidade.Unidade:
+				return "unidades";
+		}
+	}
+	return unidade;
+}
+
