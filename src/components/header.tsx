@@ -15,21 +15,21 @@ export default function Header() {
         <nav className="ml-auto flex gap-4 sm:gap-6">
           <Link
             className="text-sm font-medium hover:underline underline-offset-4"
-            href="#about"
+            href="#sobre"
           >
             Sobre
           </Link>
           <Link
             className="text-sm font-medium hover:underline underline-offset-4"
-            href="#features"
+            href="#recursos"
           >
-            Features
+            Recursos
           </Link>
           <Link
             className="text-sm font-medium hover:underline underline-offset-4"
-            href="#how-to-play"
+            href="#como-jogar"
           >
-            How to Play
+            Como jogar
           </Link>
         </nav>
       </div>

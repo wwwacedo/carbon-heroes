@@ -1,56 +1,52 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Leaf, Zap, Users, BarChart } from "lucide-react";
+import { orbitron } from "./fonts/fonts";
 import Link from "next/link";
 
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="px-4 lg:px-6 h-14 flex items-center">
-        <Link className="flex items-center justify-center" href="#">
-          <Leaf className="h-6 w-6 text-green-600" />
-          <span className="ml-2 text-2xl font-bold text-gray-900">
-            CARBON HEROES
-          </span>
-        </Link>
-        
-      </header>
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-green-100">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                  Become a Carbon Hero
+                  Torne-se um Herói do Carbono
                 </h1>
                 <p className="mx-auto max-w-[700px] text-gray-600 md:text-xl">
-                  Discover your carbon footprint and learn how to reduce it with
-                  our interactive quiz game.
+                  Descubra sua pegada de carbono e aprenda como reduzi-la com
+                  nosso jogo de perguntas interativo.
                 </p>
               </div>
               <div className="space-x-4">
                 <Button className="bg-green-600 hover:bg-green-700">
-                  Start Quiz
+                  Iniciar teste
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-                <Button variant="outline">Learn More</Button>
+                <Link href="#sobre">
+                  <Button variant="outline">Saiba mais</Button>
+                </Link>
               </div>
             </div>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32" id="about">
+        <section className="w-full py-12 md:py-24 lg:py-32" id="sobre">
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 px-10 md:gap-16 lg:grid-cols-2">
               <div className="space-y-4">
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                  What is Carbon Heroes?
+                  O que é o{" "}
+                  <span className={`${orbitron.className}`}>Carbon Heroes</span>
+                  ?
                 </h2>
                 <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Carbon Heroes is an interactive quiz game designed to help you
-                  understand and calculate your carbon footprint. By answering
-                  questions about your daily activities, you'll learn how your
-                  lifestyle impacts the environment and discover ways to reduce
-                  your carbon emissions.
+                  <span className={`${orbitron.className}`}>Carbon Heroes</span>{" "}
+                  é um jogo de perguntas interativo projetado para ajudar você a
+                  entender e calcular sua pegada de carbono. Ao responder
+                  perguntas sobre suas atividades diárias, você aprenderá como
+                  seu estilo de vida impacta o meio ambiente.
                 </p>
               </div>
               <div className="flex items-center justify-center">
@@ -60,27 +56,27 @@ export default function HomePage() {
                       <div className="flex items-center gap-4">
                         <Zap className="h-8 w-8 text-yellow-500" />
                         <div className="space-y-1">
-                          <h3 className="font-bold">Energy Use</h3>
+                          <h3 className="font-bold">Transporte</h3>
                           <p className="text-sm text-gray-600">
-                            Measure your home energy consumption
+                            Analise seus hábitos de viagem e impacto
                           </p>
                         </div>
                       </div>
                       <div className="flex items-center gap-4">
                         <Users className="h-8 w-8 text-blue-500" />
                         <div className="space-y-1">
-                          <h3 className="font-bold">Transportation</h3>
+                          <h3 className="font-bold">Energia em casa</h3>
                           <p className="text-sm text-gray-600">
-                            Analyze your travel habits and impact
+                            Meça o consumo de energia da sua casa
                           </p>
                         </div>
                       </div>
                       <div className="flex items-center gap-4">
                         <Leaf className="h-8 w-8 text-green-500" />
                         <div className="space-y-1">
-                          <h3 className="font-bold">Lifestyle Choices</h3>
+                          <h3 className="font-bold">Alimentação</h3>
                           <p className="text-sm text-gray-600">
-                            Evaluate your daily habits and consumption
+                            Avalie seus hábitos e consumo diários
                           </p>
                         </div>
                       </div>
@@ -93,82 +89,82 @@ export default function HomePage() {
         </section>
         <section
           className="w-full py-12 md:py-24 lg:py-32 bg-gray-100"
-          id="features"
+          id="recursos"
         >
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight text-center mb-8">
-              Key Features
+              Recursos
             </h2>
             <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
               <Card>
                 <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
                   <BarChart className="h-12 w-12 text-green-600" />
-                  <h3 className="text-xl font-bold">
-                    Personalized Calculations
-                  </h3>
+                  <h3 className="text-xl font-bold">Cálculos Personalizados</h3>
                   <p className="text-gray-600">
-                    Get an accurate estimate of your carbon footprint based on
-                    your lifestyle
+                    Obtenha uma estimativa precisa da sua pegada de carbono com
+                    base no seu estilo de vida
                   </p>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
                   <Users className="h-12 w-12 text-green-600" />
-                  <h3 className="text-xl font-bold">Compare & Compete</h3>
+                  <h3 className="text-xl font-bold">Compare e Compita</h3>
                   <p className="text-gray-600">
-                    See how your carbon footprint compares to others and
-                    challenge your friends
+                    Veja como sua pegada de carbono se compara a outras e
+                    desafie seus amigos
                   </p>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
                   <Leaf className="h-12 w-12 text-green-600" />
-                  <h3 className="text-xl font-bold">Eco-friendly Tips</h3>
+                  <h3 className="text-xl font-bold">
+                    Compartilhe seus resultados
+                  </h3>
                   <p className="text-gray-600">
-                    Receive personalized suggestions to reduce your
-                    environmental impact
+                    Compartilhe seus resultados e inspire outras pessoas a
+                    conhecer sua pegada de carbono
                   </p>
                 </CardContent>
               </Card>
             </div>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32" id="how-to-play">
+        <section className="w-full py-12 md:py-24 lg:py-32" id="como-jogar">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight text-center mb-8">
-              How to Play
+              Como jogar
             </h2>
             <div className="grid gap-10 lg:grid-cols-3">
               <div className="flex flex-col items-center text-center space-y-4">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-green-900">
                   1
                 </div>
-                <h3 className="text-xl font-bold">Answer Questions</h3>
+                <h3 className="text-xl font-bold">Responda as Questões</h3>
                 <p className="text-gray-600">
-                  Respond to a series of questions about your daily activities
-                  and habits
+                  Responda a uma série de perguntas sobre suas atividades
+                  diárias e hábitos
                 </p>
               </div>
               <div className="flex flex-col items-center text-center space-y-4">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-green-900">
                   2
                 </div>
-                <h3 className="text-xl font-bold">Get Your Score</h3>
+                <h3 className="text-xl font-bold">Obtenha sua pontuação</h3>
                 <p className="text-gray-600">
-                  Receive a detailed breakdown of your carbon footprint across
-                  different categories
+                  Receba uma análise da sua pegada de carbono em diferentes
+                  categorias
                 </p>
               </div>
               <div className="flex flex-col items-center text-center space-y-4">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-green-900">
                   3
                 </div>
-                <h3 className="text-xl font-bold">Take Action</h3>
+                <h3 className="text-xl font-bold">Tome uma atitude</h3>
                 <p className="text-gray-600">
-                  Learn about ways to reduce your impact and track your progress
-                  over time
+                  Aprenda sobre maneiras de reduzir seu impacto e acompanhar seu
+                  progresso ao longo do tempo
                 </p>
               </div>
             </div>
@@ -179,16 +175,16 @@ export default function HomePage() {
             <div className="flex flex-col items-center space-y-4 text-center text-white">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                  Ready to Become a Carbon Hero?
+                  Pronto para se tornar um herói do carbono?
                 </h2>
                 <p className="mx-auto max-w-[700px] md:text-xl">
-                  Take the quiz now and start your journey towards a more
-                  sustainable lifestyle.
+                  Faça o teste agora e comece sua jornada em direção a um estilo
+                  de vida mais sustentável.
                 </p>
               </div>
               <div className="space-x-4">
                 <Button className="bg-white text-green-600 hover:bg-gray-100">
-                  Start Quiz
+                  Iniciar teste
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
@@ -198,16 +194,8 @@ export default function HomePage() {
       </main>
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
         <p className="text-xs text-gray-500">
-          © 2024 Carbon Heroes. All rights reserved.
+          © 2024 Carbon Heroes. Todos os direitos reservados.
         </p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-xs hover:underline underline-offset-4" href="#">
-            Terms of Service
-          </Link>
-          <Link className="text-xs hover:underline underline-offset-4" href="#">
-            Privacy
-          </Link>
-        </nav>
       </footer>
     </div>
   );
