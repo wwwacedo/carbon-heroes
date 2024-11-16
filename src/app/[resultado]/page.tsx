@@ -10,7 +10,7 @@ import {
 } from "@/lib/calc";
 import { Leaf } from "lucide-react";
 import { perguntas } from "@/data/data";
-import { Respostas, Unidade } from "@/data/types";
+import { Fator, FatorDescricao, Respostas, Unidade } from "@/data/types";
 
 // http://localhost:3000/resultado?nome=Mariana&p1=true&p2=2&p3=50&p4=10&p7=true&p8=2&p9=4&p10=true&p11=6&p12=5&p13=true&p15=1&p16=1&p17=30&p18=2&p19=false&p21=true&p22=21&p23=true&p24=0.2&p25=1.4&p27=1&p28=7
 
@@ -233,16 +233,8 @@ export default async function ResultadoPage({
     pergunta: pergunta.texto,
     resposta: avaliaResposta(respostas[`p${pergunta.id}` as keyof Respostas]),
     unidade: pergunta.unidadeResposta as Unidade,
+    fatorDescricao: pergunta.fatorDescricao as FatorDescricao,
   }));
-
-  const detalhes = [
-    {
-      categoria: perguntas[0].categoria,
-      pergunta: perguntas[0].texto,
-      resposta: avaliaResposta(respostas.p1),
-      unidade: perguntas[0].unidadeResposta,
-    },
-  ];
 
   return (
     <main className="m-auto">

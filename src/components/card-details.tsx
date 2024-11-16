@@ -8,28 +8,15 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "./ui/badge";
 import { Car, Utensils, Zap } from "lucide-react";
-import { Categoria, Unidade } from "@/data/types";
+import { Categoria, FatorDescricao, Unidade } from "@/data/types";
 import { cn } from "@/lib/utils";
 
 type CardDetailsProps = {
-  categoria:
-    | Categoria.Transporte
-    | Categoria.EnergiaEmCasa
-    | Categoria.Alimentacao;
+  categoria: Categoria;
   pergunta: string;
   resposta: string | number;
-  unidade:
-    | Unidade.Booleano
-    | Unidade.Pessoa
-    | Unidade.Litro
-    | Unidade.MetroCubico
-    | Unidade.Viagem
-    | Unidade.Km
-    | Unidade.KWh
-    | Unidade.Mes
-    | Unidade.Kg
-    | Unidade.Unidade;
-  fator?: string;
+  unidade: Unidade;
+  fatorDescricao?: FatorDescricao;
 };
 
 export const CardDetails: React.FC<CardDetailsProps> = ({
@@ -37,7 +24,7 @@ export const CardDetails: React.FC<CardDetailsProps> = ({
   pergunta,
   resposta,
   unidade,
-  fator,
+  fatorDescricao,
 }) => {
   return (
     <Card className="w-full max-w-md overflow-hidden text-start">
@@ -45,11 +32,14 @@ export const CardDetails: React.FC<CardDetailsProps> = ({
         <div className="flex items-center justify-between">
           <Badge
             variant="secondary"
-            className={cn("text-xs capitalize text-white", CorCategoria(categoria))}
-						>
+            className={cn(
+              "text-xs capitalize text-white",
+              CorCategoria(categoria)
+            )}
+          >
             {categoria}
           </Badge>
-						{IconeCategoria(categoria)}
+          {IconeCategoria(categoria)}
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -60,11 +50,11 @@ export const CardDetails: React.FC<CardDetailsProps> = ({
           </p>
         </div>
 
-        {fator && (
+        {fatorDescricao && (
           <div className="pt-2 border-t">
             <p className="text-sm text-muted-foreground flex items-center gap-2">
-              <span className="font-medium">Fator:</span>
-              {fator}
+              <span className="font-medium">Fator de emissão:</span>
+              {fatorDescricao}
             </p>
           </div>
         )}

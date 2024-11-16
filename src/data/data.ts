@@ -1,4 +1,4 @@
-import { Categoria, Pergunta, Unidade } from "./types";
+import { Categoria, Pergunta, Unidade, Fator, FatorDescricao } from "./types";
 
 export const perguntas: Pergunta[] = [
   {
@@ -18,24 +18,38 @@ export const perguntas: Pergunta[] = [
     categoria: Categoria.Transporte,
     texto: "Qual o seu consumo semanal de gasolina? (em litros)",
     unidadeResposta: Unidade.Litro,
+		fator: Fator.Gasolina,
+		fatorDescricao: FatorDescricao.Gasolina,
   },
   {
     id: 4,
     categoria: Categoria.Transporte,
     texto: "Qual o seu consumo semanal de etanol? (em litros)",
     unidadeResposta: Unidade.Litro,
+		fator: Fator.Etanol,
+		fatorDescricao: FatorDescricao.Etanol,
+	},
+	{
+		id: 5,
+		categoria: Categoria.Transporte,
+		texto: "Qual o seu consumo semanal de diesel? (em litros)",
+		unidadeResposta: Unidade.Litro,
   },
   {
     id: 5,
     categoria: Categoria.Transporte,
     texto: "Qual o seu consumo semanal de diesel? (em litros)",
     unidadeResposta: Unidade.Litro,
+		fator: Fator.Diesel,
+		fatorDescricao: FatorDescricao.Diesel,
   },
   {
     id: 6,
     categoria: Categoria.Transporte,
     texto: "Qual o seu consumo semanal de GNV? (em m3)",
     unidadeResposta: Unidade.MetroCubico,
+		fator: Fator.GNV,
+		fatorDescricao: FatorDescricao.GNV,
   },
   {
     id: 7,
@@ -52,8 +66,10 @@ export const perguntas: Pergunta[] = [
   {
     id: 9,
     categoria: Categoria.Transporte,
-    texto: "Quantos km em média por viagem?",
+    texto: "Qual a distância percorrida em média por viagem? (em km)",
     unidadeResposta: Unidade.Km,
+		fator: Fator.Onibus,
+		fatorDescricao: FatorDescricao.Onibus
   },
   {
     id: 10,
@@ -70,8 +86,10 @@ export const perguntas: Pergunta[] = [
   {
     id: 12,
     categoria: Categoria.Transporte,
-    texto: "Quantos km em média por viagem?",
+    texto: "Qual a distância percorrida em média por viagem? (em km)",
     unidadeResposta: Unidade.Km,
+		fator: Fator.MetroOuTrem,
+		fatorDescricao: FatorDescricao.MetroOuTrem
   },
   {
     id: 13,
@@ -85,6 +103,8 @@ export const perguntas: Pergunta[] = [
     texto:
       "Quantas viagens de curta distância (até 1.000 km) você fez nos últimos 12 meses (ida e volta = 1 viagem)?",
     unidadeResposta: Unidade.Viagem,
+		fator: Fator.AviaoCurtaDistancia,
+		fatorDescricao: FatorDescricao.AviaoCurtaDistancia
   },
   {
     id: 15,
@@ -92,6 +112,8 @@ export const perguntas: Pergunta[] = [
     texto:
       "Quantas viagens de média distância (1.000 a 3.700 km) você fez nos últimos 12 meses (ida e volta = 1 viagem)?",
     unidadeResposta: Unidade.Viagem,
+		fator: Fator.AviaoMediaDistancia,
+		fatorDescricao: FatorDescricao.AviaoMediaDistancia
   },
   {
     id: 16,
@@ -99,12 +121,16 @@ export const perguntas: Pergunta[] = [
     texto:
       "Quantas viagens de longa distância (mais de 5.000 km) você fez nos últimos 12 meses (ida e volta = 1 viagem)?",
     unidadeResposta: Unidade.Viagem,
+		fator: Fator.AviaoLongaDistancia,
+		fatorDescricao: FatorDescricao.AviaoLongaDistancia
   },
   {
     id: 17,
     categoria: Categoria.EnergiaEmCasa,
     texto: "Qual é o seu consumo mensal de energia elétrica (em kWh)?",
     unidadeResposta: Unidade.KWh,
+		fator: Fator.EnergiaEletrica,
+		fatorDescricao: FatorDescricao.EnergiaEletrica
   },
   {
     id: 18,
@@ -123,6 +149,8 @@ export const perguntas: Pergunta[] = [
     categoria: Categoria.EnergiaEmCasa,
     texto: "Quantos meses dura um botijão de gás na sua casa?",
     unidadeResposta: Unidade.Mes,
+		fator: Fator.BotijaoDeGas,
+		fatorDescricao: FatorDescricao.BotijaoDeGas
   },
   {
     id: 21,
@@ -135,6 +163,8 @@ export const perguntas: Pergunta[] = [
     categoria: Categoria.EnergiaEmCasa,
     texto: "Qual é o seu consumo de gás encanado mensal (em m3)?",
     unidadeResposta: Unidade.MetroCubico,
+		fator: Fator.GasEncanado,
+		fatorDescricao: FatorDescricao.GasEncanado
   },
   {
     id: 23,
@@ -147,29 +177,39 @@ export const perguntas: Pergunta[] = [
     categoria: Categoria.Alimentacao,
     texto: "Quanta carne bovina você consome por semana (em kg)?",
     unidadeResposta: Unidade.Kg,
+		fator: Fator.CarneBovina,
+		fatorDescricao: FatorDescricao.CarneBovina
   },
   {
     id: 25,
     categoria: Categoria.Alimentacao,
     texto: "Quanta carne de frango você consome por semana (em kg)?",
     unidadeResposta: Unidade.Kg,
+		fator: Fator.CarneFrango,
+		fatorDescricao: FatorDescricao.CarneFrango
   },
   {
     id: 26,
     categoria: Categoria.Alimentacao,
     texto: "Quanta carne suína você consome por semana (em kg)?",
     unidadeResposta: Unidade.Kg,
+		fator: Fator.CarneSuina,
+		fatorDescricao: FatorDescricao.CarneSuina
   },
   {
     id: 27,
     categoria: Categoria.Alimentacao,
     texto: "Quanto leite de vaca você consome por semana (em litros)?",
     unidadeResposta: Unidade.Litro,
+		fator: Fator.Leite,
+		fatorDescricao: FatorDescricao.Leite
   },
   {
     id: 28,
     categoria: Categoria.Alimentacao,
     texto: "Quantos ovos você consome por semana (em unidades)?",
     unidadeResposta: Unidade.Unidade,
+		fator: Fator.Ovo,
+		fatorDescricao: FatorDescricao.Ovo
   },
 ];
