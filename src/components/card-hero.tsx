@@ -24,7 +24,7 @@ export const CardHero: React.FC<CardHeroProps> = ({
         <div className="w-10 h-10 rounded bg-green-100 flex items-center justify-center">
           <Leaf className="w-6 h-6 text-green-600" />
         </div>
-        <div>
+        <div className="flex flex-col items-start">
           <div className="text-sm text-muted-foreground">Carbon Heroes</div>
           <div className="font-semibold">{usuario}</div>
         </div>

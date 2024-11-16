@@ -1,5 +1,6 @@
 import { Leaf } from "lucide-react";
 import Link from "next/link";
+import { orbitron } from "@/app/fonts/fonts";
 
 export default function Header() {
   return (
@@ -9,7 +10,7 @@ export default function Header() {
           <div className="w-10 h-10 rounded bg-green-100 flex items-center justify-center">
             <Leaf className="w-6 h-6 text-green-600" />
           </div>
-          Carbon Heroes
+          <h2 className={`${orbitron.className}`}>Carbon Heroes</h2>
         </Link>
       </div>
     </header>
