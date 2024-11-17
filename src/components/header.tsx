@@ -1,14 +1,15 @@
-'use client'
+"use client";
 
-import { useState } from "react"
-import { Leaf, Menu, X } from 'lucide-react'
-import Link from "next/link"
-import { orbitron } from "@/app/fonts/fonts"
+import { useState } from "react";
+import { Leaf, Menu, X } from "lucide-react";
+import Link from "next/link";
+import { orbitron } from "@/app/fonts/fonts";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
     <header className="m-auto bg-gray-50 border-b">
@@ -41,35 +42,46 @@ export default function Header() {
             </Link>
           </nav>
           <button onClick={toggleMenu} className="sm:hidden">
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </button>
         </div>
       </div>
-      {isMenuOpen && (
-        <nav className="sm:hidden container m-auto px-4 py-2 flex flex-col gap-3 text-center pb-4">
-          <Link
-            className="text-sm font-medium hover:underline underline-offset-4"
-            href="#sobre"
-            onClick={toggleMenu}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.nav
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="sm:hidden container m-auto px-4 py-2 flex flex-col gap-3 text-center pb-4"
           >
-            Sobre
-          </Link>
-          <Link
-            className="text-sm font-medium hover:underline underline-offset-4"
-            href="#recursos"
-            onClick={toggleMenu}
-          >
-            Recursos
-          </Link>
-          <Link
-            className="text-sm font-medium hover:underline underline-offset-4"
-            href="#como-jogar"
-            onClick={toggleMenu}
-          >
-            Como jogar
-          </Link>
-        </nav>
-      )}
+            <Link
+              className="text-sm font-medium hover:underline underline-offset-4"
+              href="#sobre"
+              onClick={toggleMenu}
+            >
+              Sobre
+            </Link>
+            <Link
+              className="text-sm font-medium hover:underline underline-offset-4"
+              href="#recursos"
+              onClick={toggleMenu}
+            >
+              Recursos
+            </Link>
+            <Link
+              className="text-sm font-medium hover:underline underline-offset-4"
+              href="#como-jogar"
+              onClick={toggleMenu}
+            >
+              Como jogar
+            </Link>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
-  )
+  );
 }
