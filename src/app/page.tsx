@@ -150,7 +150,7 @@ export default function HomePage() {
                 <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
                   <QrCodeIcon className="h-12 w-12 text-green-600" />
                   <h3 className="text-xl font-bold">
-                    Compartilhe seus resultados
+                    Compartilhe seus Resultados
                   </h3>
                   <p className="text-gray-600">
                     Compartilhe seus resultados e inspire outras pessoas a
@@ -175,7 +175,7 @@ export default function HomePage() {
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-green-900">
                   1
                 </div>
-                <h3 className="text-xl font-bold">Responda as Questões</h3>
+                <h3 className="text-xl font-bold">Responda as questões</h3>
                 <p className="text-gray-600">
                   Responda a uma série de perguntas sobre suas atividades
                   diárias e hábitos
