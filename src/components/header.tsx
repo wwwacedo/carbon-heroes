@@ -14,7 +14,7 @@ export default function Header() {
 	const scrollToSection = (id: string) => {
 		const element = document.getElementById(id);
 		if (element) {
-			const headerOffset = 70; // Ajuste este valor conforme a altura do seu cabeçalho
+			const headerOffset = 80; 
 			const elementPosition = element.getBoundingClientRect().top;
 			const offsetPosition = elementPosition + window.scrollY - headerOffset;
 	
