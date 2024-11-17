@@ -63,7 +63,7 @@ export default function HomePage() {
           id="sobre"
         >
           <div className="container md:px-6">
-            <div className="grid gap-10 px-6 md:gap-16 lg:grid-cols-2">
+            <div className="grid gap-10 px-10 md:gap-16 lg:grid-cols-2">
               <div className="space-y-4">
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
                   O que é o{" "}
