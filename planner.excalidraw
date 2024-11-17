@@ -1,0 +1,48 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor",
+  "elements": [
+    {
+      "id": "Z0cy42c537LaX2rWx27Zb",
+      "type": "text",
+      "x": 382.4088439941406,
+      "y": 203.8802032470703,
+      "width": 643.99951171875,
+      "height": 50,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "seed": 1542834745,
+      "version": 91,
+      "versionNonce": 1776352023,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1731851796170,
+      "link": null,
+      "locked": false,
+      "text": "Inserir QRCode\nTratar caso todas as respostas sejam nulas (fazer card Nulo)",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "baseline": 43,
+      "containerId": null,
+      "originalText": "Inserir QRCode\nTratar caso todas as respostas sejam nulas (fazer card Nulo)",
+      "lineHeight": 1.25
+    }
+  ],
+  "appState": {
+    "gridSize": null,
+    "viewBackgroundColor": "#ffffff"
+  },
+  "files": {}
+}
