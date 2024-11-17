@@ -62,15 +62,15 @@ export default function HomePage() {
           className="w-full flex justify-center py-12 md:py-24 lg:py-32"
           id="sobre"
         >
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-10 px-10 md:gap-16 lg:grid-cols-2">
+          <div className="container md:px-6">
+            <div className="grid gap-10 px-6 md:gap-16 lg:grid-cols-2">
               <div className="space-y-4">
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
                   O que é o{" "}
                   <span className={`${orbitron.className}`}>Carbon Heroes</span>
                   ?
                 </h2>
-                <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className=" text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   <span className={`${orbitron.className}`}>Carbon Heroes</span>{" "}
                   é um jogo de perguntas interativo projetado para ajudar você a
                   entender e calcular sua pegada de carbono. Ao responder
@@ -254,7 +254,11 @@ function DialogHero({ children }: { children: React.ReactNode }) {
           nossa aplicação em C#.
         </p>
         <DialogFooter>
-          <a href="https://github.com/wwwacedo/gs-carbon-hero" target="_blank">
+          <a
+            href="https://github.com/wwwacedo/gs-carbon-hero"
+            target="_blank"
+            className="w-full"
+          >
             <Button
               size={"lg"}
               variant="default"

@@ -46,7 +46,7 @@ export default function Header() {
         </div>
       </div>
       {isMenuOpen && (
-        <nav className="sm:hidden container m-auto px-4 py-2 flex flex-col gap-2">
+        <nav className="sm:hidden container m-auto px-4 py-2 flex flex-col gap-3 text-center pb-4">
           <Link
             className="text-sm font-medium hover:underline underline-offset-4"
             href="#sobre"
