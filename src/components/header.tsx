@@ -6,6 +6,7 @@ import Link from "next/link";
 import { orbitron } from "@/app/fonts/fonts";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
+import { Button } from "./ui/button";
 
 export default function Header() {
   const router = useRouter();
@@ -43,32 +44,35 @@ export default function Header() {
         </Link>
         <div className="ml-auto flex items-center">
           <nav className="hidden sm:flex gap-6">
-            <button
+            <Button
+              variant={"link"}
               className="text-sm font-medium hover:underline underline-offset-4"
               onClick={() => scrollToSection("sobre")}
             >
               Sobre
-            </button>
-            <button
+            </Button>
+            <Button
+              variant={"link"}
               className="text-sm font-medium hover:underline underline-offset-4"
               onClick={() => scrollToSection("recursos")}
             >
               Recursos
-            </button>
-            <button
+            </Button>
+            <Button
+              variant={"link"}
               className="text-sm font-medium hover:underline underline-offset-4"
               onClick={() => scrollToSection("como-jogar")}
             >
               Como jogar
-            </button>
+            </Button>
           </nav>
-          <button onClick={toggleMenu} className="sm:hidden">
+          <Button onClick={toggleMenu} className="sm:hidden">
             {isMenuOpen ? (
               <X className="h-6 w-6" />
             ) : (
               <Menu className="h-6 w-6" />
             )}
-          </button>
+          </Button>
         </div>
       </div>
       <AnimatePresence>
@@ -77,9 +81,10 @@ export default function Header() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="sm:hidden container m-auto px-4 py-2 flex flex-col gap-3 text-center pb-4"
+            className="sm:hidden container m-auto px-4  flex flex-col text-center pb-2"
           >
-            <button
+            <Button
+              variant={"link"}
               className="text-sm font-medium hover:underline underline-offset-4"
               onClick={() => {
                 scrollToSection("sobre");
@@ -87,8 +92,9 @@ export default function Header() {
               }}
             >
               Sobre
-            </button>
-            <button
+            </Button>
+            <Button
+              variant={"link"}
               className="text-sm font-medium hover:underline underline-offset-4"
               onClick={() => {
                 scrollToSection("recursos");
@@ -96,8 +102,9 @@ export default function Header() {
               }}
             >
               Recursos
-            </button>
-            <button
+            </Button>
+            <Button
+              variant={"link"}
               className="text-sm font-medium hover:underline underline-offset-4"
               onClick={() => {
                 scrollToSection("como-jogar");
@@ -105,7 +112,7 @@ export default function Header() {
               }}
             >
               Como jogar
-            </button>
+            </Button>
           </motion.nav>
         )}
       </AnimatePresence>
