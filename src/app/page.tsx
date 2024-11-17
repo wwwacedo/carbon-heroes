@@ -253,17 +253,12 @@ function DialogHero({ children }: { children: React.ReactNode }) {
           Neste momento, o acesso ao quiz está disponível apenas através da
           nossa aplicação em C#.
         </p>
-        <DialogFooter className="sm:justify-between">
-          <DialogClose asChild>
-            <Button type="button" variant="secondary">
-              Fechar
-            </Button>
-          </DialogClose>
+        <DialogFooter>
           <a href="https://github.com/wwwacedo/gs-carbon-hero" target="_blank">
             <Button
-              type="button"
+              size={"lg"}
               variant="default"
-              className="flex justify-between bg-black"
+              className="bg-black w-full flex items-center justify-around hover:text-black transition-all"
             >
               <Github />
               <p>Ir para o repositório no GitHub</p>
