@@ -1,14 +1,32 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Leaf, Zap, Users, BarChart } from "lucide-react";
+import Github from "./icons/github";
+import {
+  ArrowRight,
+  QrCodeIcon,
+  Zap,
+  Users,
+  BarChart,
+  Car,
+  Utensils,
+} from "lucide-react";
 import { orbitron } from "./fonts/fonts";
 import Link from "next/link";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-green-100">
+        <section className="w-full flex justify-center py-12 md:py-24 lg:py-32 xl:py-48 bg-green-100">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="space-y-2">
@@ -21,18 +39,29 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="space-x-4">
-                <Button className="bg-green-600 hover:bg-green-700">
-                  Iniciar teste
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <DialogHero>
+                  <Button
+                    size={"lg"}
+                    className="bg-green-600 hover:bg-green-700 text-base"
+                  >
+                    Iniciar teste
+                    <ArrowRight className="ml-2 h-6 w-6" />
+                  </Button>
+                </DialogHero>
                 <Link href="#sobre">
-                  <Button variant="outline">Saiba mais</Button>
+                  <Button size={"lg"} variant="outline" className="text-base">
+                    Saiba mais
+                  </Button>
                 </Link>
               </div>
             </div>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32" id="sobre">
+
+        <section
+          className="w-full flex justify-center py-12 md:py-24 lg:py-32"
+          id="sobre"
+        >
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 px-10 md:gap-16 lg:grid-cols-2">
               <div className="space-y-4">
@@ -54,7 +83,7 @@ export default function HomePage() {
                   <CardContent className="p-6">
                     <div className="grid gap-4">
                       <div className="flex items-center gap-4">
-                        <Zap className="h-8 w-8 text-yellow-500" />
+                        <Car className="h-8 w-8 text-blue-600" />
                         <div className="space-y-1">
                           <h3 className="font-bold">Transporte</h3>
                           <p className="text-sm text-gray-600">
@@ -63,7 +92,7 @@ export default function HomePage() {
                         </div>
                       </div>
                       <div className="flex items-center gap-4">
-                        <Users className="h-8 w-8 text-blue-500" />
+                        <Zap className="h-8 w-8 text-yellow-600" />
                         <div className="space-y-1">
                           <h3 className="font-bold">Energia em casa</h3>
                           <p className="text-sm text-gray-600">
@@ -72,7 +101,7 @@ export default function HomePage() {
                         </div>
                       </div>
                       <div className="flex items-center gap-4">
-                        <Leaf className="h-8 w-8 text-green-500" />
+                        <Utensils className="w-8 h-8 text-red-600" />
                         <div className="space-y-1">
                           <h3 className="font-bold">Alimentação</h3>
                           <p className="text-sm text-gray-600">
@@ -87,8 +116,9 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
         <section
-          className="w-full py-12 md:py-24 lg:py-32 bg-gray-100"
+          className="w-full flex justify-center py-12 md:py-24 lg:py-32 bg-gray-100"
           id="recursos"
         >
           <div className="container px-4 md:px-6">
@@ -118,20 +148,24 @@ export default function HomePage() {
               </Card>
               <Card>
                 <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
-                  <Leaf className="h-12 w-12 text-green-600" />
+                  <QrCodeIcon className="h-12 w-12 text-green-600" />
                   <h3 className="text-xl font-bold">
                     Compartilhe seus resultados
                   </h3>
                   <p className="text-gray-600">
                     Compartilhe seus resultados e inspire outras pessoas a
-                    conhecer sua pegada de carbono
+                    conhecer sua própria pegada de carbono
                   </p>
                 </CardContent>
               </Card>
             </div>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32" id="como-jogar">
+
+        <section
+          className="w-full flex justify-center py-12 md:py-24 lg:py-32"
+          id="como-jogar"
+        >
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight text-center mb-8">
               Como jogar
@@ -170,12 +204,13 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-green-600">
+
+        <section className="w-full flex justify-center py-12 md:py-24 lg:py-32 bg-green-600">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center text-white">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                  Pronto para se tornar um herói do carbono?
+                  Pronto para se tornar um Herói do Carbono?
                 </h2>
                 <p className="mx-auto max-w-[700px] md:text-xl">
                   Faça o teste agora e comece sua jornada em direção a um estilo
@@ -183,20 +218,60 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="space-x-4">
-                <Button className="bg-white text-green-600 hover:bg-gray-100">
-                  Iniciar teste
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <DialogHero>
+                  <Button
+                    size={"lg"}
+                    className="bg-white text-green-600 hover:bg-gray-100 text-base"
+                  >
+                    Iniciar teste
+                    <ArrowRight className="ml-2 h-6 w-6" />
+                  </Button>
+                </DialogHero>
               </div>
             </div>
           </div>
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
+      <footer className="flex gap-2 sm:flex-row py-6 w-full shrink-0 items-center justify-center px-4 md:px-6 border-t ">
         <p className="text-xs text-gray-500">
           © 2024 Carbon Heroes. Todos os direitos reservados.
         </p>
       </footer>
     </div>
+  );
+}
+
+function DialogHero({ children }: { children: React.ReactNode }) {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>{children}</DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Questionário em C#</DialogTitle>
+        </DialogHeader>
+        <p>
+          Neste momento, o acesso ao quiz está disponível apenas através da
+          nossa aplicação em C#.
+        </p>
+        <DialogFooter className="sm:justify-between">
+          <DialogClose asChild>
+            <Button type="button" variant="secondary">
+              Fechar
+            </Button>
+          </DialogClose>
+          <a href="https://github.com/wwwacedo/gs-carbon-hero" target="_blank">
+            <Button
+              type="button"
+              variant="default"
+              className="flex justify-between bg-black"
+            >
+              <Github />
+              <p>Ir para o repositório no GitHub</p>
+              <ArrowRight className="ml-2 h-6 w-6" />
+            </Button>
+          </a>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 }
