@@ -8,12 +8,16 @@ import {
   calcularTransporteColetivo,
   calcularViagensAereas,
 } from "@/lib/calc";
-import { Leaf } from "lucide-react";
+import { Frown, Leaf } from "lucide-react";
 import { perguntas } from "@/data/data";
 import { Fator, FatorDescricao, Respostas, Unidade } from "@/data/types";
 import { orbitron } from "../fonts/fonts";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 // http://localhost:3000/resultado?nome=Mariana&p1=true&p2=2&p3=50&p4=10&p7=true&p8=2&p9=4&p10=true&p11=6&p12=5&p13=true&p15=1&p16=1&p17=30&p18=2&p19=false&p21=true&p22=21&p23=true&p24=0.2&p25=1.4&p27=1&p28=7
+
+// http://localhost:3000/resultado?nome=Mariana%20Macedo&p1=false&p7=false&p10=false&p13=false&p19=false&p21=false&p23=false
 
 export default async function ResultadoPage({
   searchParams,
@@ -131,18 +135,19 @@ export default async function ResultadoPage({
     respostas.p28
   );
 
-  console.log(
-    "\nTransporte individual:",
-    transporteIndividual,
-    "kg de CO2/ano"
-  );
-  console.log("Transporte coletivo:", transporteColetivo, "kg de CO2/ano");
-  console.log("Viagens aéreas:", viagensAereas, "kg de CO2/ano");
-  console.log("Energia em casa:", energiaEmCasa, "kg de CO2/ano");
-  console.log("Alimentação:", alimentacao, "kg de CO2/ano");
+  // console.log(
+  //   "\nTransporte individual:",
+  //   transporteIndividual,
+  //   "kg de CO2/ano"
+  // );
+  // console.log("Transporte coletivo:", transporteColetivo, "kg de CO2/ano");
+  // console.log("Viagens aéreas:", viagensAereas, "kg de CO2/ano");
+  // console.log("Energia em casa:", energiaEmCasa, "kg de CO2/ano");
+  // console.log("Alimentação:", alimentacao, "kg de CO2/ano");
 
   const totalTransportes =
     transporteIndividual + transporteColetivo + viagensAereas;
+
   const totalGeral = totalTransportes + energiaEmCasa + alimentacao;
 
   const resumoCard = {
@@ -182,36 +187,51 @@ export default async function ResultadoPage({
               Carbon Heroes
             </h1>
             <p className="mx-auto max-w-[700px] text-gray-800 md:text-xl">
-              <span className="font-semibold">{respostas.nome}</span>, acompanhe
-              a sua pegada de carbono.
+              <span className="font-semibold">{respostas.nome}</span>,{" "}
+              {totalGeral > 0
+                ? "acompanhe a sua pegada de carbono."
+                : "parece que você não respondeu nenhuma pergunta."}
             </p>
           </div>
 
-          <section className="mt-4 py-10 w-full bg-gray-100 flex flex-col items-center">
-            <h2
-              className={`${orbitron.className} text-2xl font-semibold text-center mb-8`}
-            >
-              Seus resultados
-            </h2>
-            <div className="w-full px-6 flex justify-center">
-              <CardHero {...resumoCard} />
+          {totalGeral === 0 && (
+            <div className="mt-4 flex flex-col justify-center items-center gap-4">
+              <Frown className="h-32 w-32 text-muted-foreground" />
+              <Link href="/">
+                <Button size={"lg"}>Voltar para a página inicial</Button>
+              </Link>
             </div>
-          </section>
+          )}
 
-          <section className="pt-10 py-10 w-full bg-gray-200 flex flex-col items-center">
-            <h2
-              className={`${orbitron.className} text-2xl font-semibold text-center mb-8`}
-            >
-              Suas perguntas
-            </h2>
-            <div className="w-full px-6 flex justify-center">
-              <div className="w-full flex flex-col gap-6 items-center">
-                {details.map((detalhe, index) => (
-                  <CardDetails key={index} {...detalhe} />
-                ))}
-              </div>
-            </div>
-          </section>
+          {totalGeral > 0 && (
+            <>
+              <section className="mt-4 py-10 w-full bg-gray-100 flex flex-col items-center">
+                <h2
+                  className={`${orbitron.className} text-2xl font-semibold text-center mb-8`}
+                >
+                  Seus resultados
+                </h2>
+                <div className="w-full px-6 flex justify-center">
+                  <CardHero {...resumoCard} />
+                </div>
+              </section>
+
+              <section className="pt-10 py-10 w-full bg-gray-200 flex flex-col items-center">
+                <h2
+                  className={`${orbitron.className} text-2xl font-semibold text-center mb-8`}
+                >
+                  Suas perguntas
+                </h2>
+                <div className="w-full px-6 flex justify-center">
+                  <div className="w-full flex flex-col gap-6 items-center">
+                    {details.map((detalhe, index) => (
+                      <CardDetails key={index} {...detalhe} />
+                    ))}
+                  </div>
+                </div>
+              </section>
+            </>
+          )}
         </div>
       </div>
     </main>

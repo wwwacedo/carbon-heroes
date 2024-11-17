@@ -4,7 +4,8 @@ const SEMANAS_ANO = 52;
 const MESES_ANO = 12;
 
 export function kgParaTons(kg: number) {
-  return Number((kg / 1000).toFixed(2));
+	const casas = kg > 1 ? 2 : 4;
+  return Number((kg / 1000).toFixed(casas));
 }
 
 export function calcularTransporteIndividual(
