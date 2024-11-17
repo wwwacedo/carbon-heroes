@@ -4,12 +4,19 @@ import { useState } from "react";
 import { Leaf, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { orbitron } from "@/app/fonts/fonts";
-import { motion, AnimatePresence } from "framer-motion";
+// import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <header className="m-auto bg-gray-50 border-b">
@@ -22,24 +29,24 @@ export default function Header() {
         </Link>
         <div className="ml-auto flex items-center">
           <nav className="hidden sm:flex gap-6">
-            <Link
+            <button
               className="text-sm font-medium hover:underline underline-offset-4"
-              href="#sobre"
+              onClick={() => scrollToSection("sobre")}
             >
               Sobre
-            </Link>
-            <Link
+            </button>
+            <button
               className="text-sm font-medium hover:underline underline-offset-4"
-              href="#recursos"
+              onClick={() => scrollToSection("recursos")}
             >
               Recursos
-            </Link>
-            <Link
+            </button>
+            <button
               className="text-sm font-medium hover:underline underline-offset-4"
-              href="#como-jogar"
+              onClick={() => scrollToSection("como-jogar")}
             >
               Como jogar
-            </Link>
+            </button>
           </nav>
           <button onClick={toggleMenu} className="sm:hidden">
             {isMenuOpen ? (
@@ -50,38 +57,44 @@ export default function Header() {
           </button>
         </div>
       </div>
-      <AnimatePresence>
+      {/* <AnimatePresence> */}
         {isMenuOpen && (
-          <motion.nav
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+          <nav
+            // initial={{ opacity: 0, y: -20 }}
+            // animate={{ opacity: 1, y: 0 }}
+            // exit={{ opacity: 0, y: -20 }}
             className="sm:hidden container m-auto px-4 py-2 flex flex-col gap-3 text-center pb-4"
           >
-            <Link
+            <button
               className="text-sm font-medium hover:underline underline-offset-4"
-              href="#sobre"
-              onClick={toggleMenu}
+              onClick={() => {
+                scrollToSection("sobre");
+                toggleMenu();
+              }}
             >
               Sobre
-            </Link>
-            <Link
+            </button>
+            <button
               className="text-sm font-medium hover:underline underline-offset-4"
-              href="#recursos"
-              onClick={toggleMenu}
+              onClick={() => {
+                scrollToSection("recursos");
+                toggleMenu();
+              }}
             >
               Recursos
-            </Link>
-            <Link
+            </button>
+            <button
               className="text-sm font-medium hover:underline underline-offset-4"
-              href="#como-jogar"
-              onClick={toggleMenu}
+              onClick={() => {
+                scrollToSection("como-jogar");
+                toggleMenu();
+              }}
             >
               Como jogar
-            </Link>
-          </motion.nav>
+            </button>
+          </nav>
         )}
-      </AnimatePresence>
+      {/* </AnimatePresence> */}
     </header>
   );
 }
