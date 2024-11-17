@@ -70,10 +70,10 @@ const Component = ({
   value: number;
 }) => {
   return (
-    <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+    <div className={`flex items-center justify-between p-3 bg-muted/50 rounded-lg ${value === 0 && "bg-primary/10"}` }>
       <div className="relative flex items-center gap-3">
         {value === 0 && (
-          <Badge variant={"outline"} className={`absolute -top-6 -left-3 ${orbitron.className}`}>Carbon Hero</Badge>
+          <Badge className={`absolute -top-6 -left-3 ${orbitron.className}`}>Carbon Hero</Badge>
         )}
         {children}
         <span>{name}</span>
