@@ -4,7 +4,7 @@ const SEMANAS_ANO = 52;
 const MESES_ANO = 12;
 
 export function kgParaTons(kg: number) {
-	const casas = kg > 1 ? 2 : 4;
+	const casas = kg > 10000 ? 2 : 4;
   return Number((kg / 1000).toFixed(casas));
 }
 

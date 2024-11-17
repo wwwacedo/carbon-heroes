@@ -10,14 +10,20 @@ import {
 } from "@/lib/calc";
 import { Frown, Leaf } from "lucide-react";
 import { perguntas } from "@/data/data";
-import { Fator, FatorDescricao, Respostas, Unidade } from "@/data/types";
+import { FatorDescricao, Respostas, Unidade } from "@/data/types";
 import { orbitron } from "../fonts/fonts";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
+// meu card
 // http://localhost:3000/resultado?nome=Mariana&p1=true&p2=2&p3=50&p4=10&p7=true&p8=2&p9=4&p10=true&p11=6&p12=5&p13=true&p15=1&p16=1&p17=30&p18=2&p19=false&p21=true&p22=21&p23=true&p24=0.2&p25=1.4&p27=1&p28=7
 
+// tudo zero
 // http://localhost:3000/resultado?nome=Mariana%20Macedo&p1=false&p7=false&p10=false&p13=false&p19=false&p21=false&p23=false
+
+
+// http://localhost:3000/resultado?nome=Mariaa&p1=false&p7=false&p10=false&p13=false&p17=250&p18=2&p19=false&p21=true&p22=4&p23=false
+
 
 export default async function ResultadoPage({
   searchParams,

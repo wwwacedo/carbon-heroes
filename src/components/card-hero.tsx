@@ -2,6 +2,8 @@ import { Card } from "@/components/ui/card";
 import { Car, Leaf, Utensils, Zap, Factory } from "lucide-react";
 import { PieChartSection } from "./pie-chart";
 import { kgParaTons } from "@/lib/calc";
+import { Badge } from "./ui/badge";
+import { orbitron } from "@/app/fonts/fonts";
 
 type CardHeroProps = {
   usuario: string;
@@ -37,43 +39,46 @@ export const CardHero: React.FC<CardHeroProps> = ({
         alimentacao={kgParaTons(alimentacao)}
       />
 
-      <div className="p-6 space-y-3">
-        <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
-          <div className="flex items-center gap-3">
-            <Factory className="w-5 h-5 text-gray-600" />
-            <span>CO2 total</span>
-          </div>
-          <span className="font-medium">{kgParaTons(total)} tons/ano</span>
-        </div>
+      <div className="p-6 space-y-4">
+        <Component name="CO2 total" value={total}>
+          <Factory className="w-5 h-5 text-gray-600" />
+        </Component>
 
-        <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
-          <div className="flex items-center gap-3">
-            <Car className="w-5 h-5 text-blue-600" />
-            <span>Transporte</span>
-          </div>
-          <span className="font-medium">
-            {kgParaTons(transportes)} tons/ano
-          </span>
-        </div>
+        <Component name="Transporte" value={transportes}>
+          <Car className="w-5 h-5 text-blue-600" />
+        </Component>
 
-        <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
-          <div className="flex items-center gap-3">
-            <Zap className="w-5 h-5 text-yellow-600" />
-            <span>Energia</span>
-          </div>
-          <span className="font-medium">{kgParaTons(energia)} tons/ano</span>
-        </div>
+        <Component name="Energia" value={energia}>
+          <Zap className="w-5 h-5 text-yellow-600" />
+        </Component>
 
-        <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
-          <div className="flex items-center gap-3">
-            <Utensils className="w-5 h-5 text-red-600" />
-            <span>Alimentação</span>
-          </div>
-          <span className="font-medium">
-            {kgParaTons(alimentacao)} tons/ano
-          </span>
-        </div>
+        <Component name="Alimentação" value={alimentacao}>
+          <Utensils className="w-5 h-5 text-red-600" />
+        </Component>
       </div>
     </Card>
+  );
+};
+
+const Component = ({
+  children,
+  name,
+  value,
+}: {
+  children: React.ReactNode;
+  name: string;
+  value: number;
+}) => {
+  return (
+    <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+      <div className="relative flex items-center gap-3">
+        {value === 0 && (
+          <Badge variant={"outline"} className={`absolute -top-6 -left-3 ${orbitron.className}`}>Carbon Hero</Badge>
+        )}
+        {children}
+        <span>{name}</span>
+      </div>
+      <span className="font-medium">{kgParaTons(value)} tons/ano</span>
+    </div>
   );
 };

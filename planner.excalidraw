@@ -5,8 +5,8 @@
   "elements": [
     {
       "type": "text",
-      "version": 93,
-      "versionNonce": 388480854,
+      "version": 136,
+      "versionNonce": 702838237,
       "isDeleted": false,
       "id": "Z0cy42c537LaX2rWx27Zb",
       "fillStyle": "solid",
@@ -19,25 +19,25 @@
       "y": 203.8802032470703,
       "strokeColor": "#1e1e1e",
       "backgroundColor": "transparent",
-      "width": 147.55987548828125,
-      "height": 50,
+      "width": 441.1197204589844,
+      "height": 75,
       "seed": 1542834745,
       "groupIds": [],
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1731870433980,
+      "updated": 1731870614867,
       "link": null,
       "locked": false,
       "fontSize": 20,
       "fontFamily": 1,
-      "text": "Inserir QRCode\n",
+      "text": "Inserir QRCode\nColocar CARBON HERO na categoria zerada\n",
       "textAlign": "left",
       "verticalAlign": "top",
       "containerId": null,
-      "originalText": "Inserir QRCode\n",
+      "originalText": "Inserir QRCode\nColocar CARBON HERO na categoria zerada\n",
       "lineHeight": 1.25,
-      "baseline": 43
+      "baseline": 68
     }
   ],
   "appState": {
