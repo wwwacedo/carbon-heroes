@@ -5,25 +5,32 @@ import { Leaf, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { orbitron } from "@/app/fonts/fonts";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Header() {
+  const router = useRouter();
+  const path = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-	const scrollToSection = (id: string) => {
-		const element = document.getElementById(id);
-		if (element) {
-			const headerOffset = 80; 
-			const elementPosition = element.getBoundingClientRect().top;
-			const offsetPosition = elementPosition + window.scrollY - headerOffset;
-	
-			window.scrollTo({
-				top: offsetPosition,
-				behavior: "smooth",
-			});
-		}
-	};
+  const scrollToSection = (id: string) => {
+    if (path !== "/") {
+      router.push(`/#${id}`);
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        const headerOffset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
 
   return (
     <header className="m-auto bg-gray-50 border-b">
