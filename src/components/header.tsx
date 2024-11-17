@@ -4,19 +4,26 @@ import { useState } from "react";
 import { Leaf, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { orbitron } from "@/app/fonts/fonts";
-// import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+	const scrollToSection = (id: string) => {
+		const element = document.getElementById(id);
+		if (element) {
+			const headerOffset = 57; // Ajuste este valor conforme a altura do seu cabeçalho
+			const elementPosition = element.getBoundingClientRect().top;
+			const offsetPosition = elementPosition + window.scrollY - headerOffset;
+	
+			window.scrollTo({
+				top: offsetPosition,
+				behavior: "smooth",
+			});
+		}
+	};
 
   return (
     <header className="m-auto bg-gray-50 border-b">
@@ -57,12 +64,12 @@ export default function Header() {
           </button>
         </div>
       </div>
-      {/* <AnimatePresence> */}
+      <AnimatePresence>
         {isMenuOpen && (
-          <nav
-            // initial={{ opacity: 0, y: -20 }}
-            // animate={{ opacity: 1, y: 0 }}
-            // exit={{ opacity: 0, y: -20 }}
+          <motion.nav
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
             className="sm:hidden container m-auto px-4 py-2 flex flex-col gap-3 text-center pb-4"
           >
             <button
@@ -92,9 +99,9 @@ export default function Header() {
             >
               Como jogar
             </button>
-          </nav>
+          </motion.nav>
         )}
-      {/* </AnimatePresence> */}
+      </AnimatePresence>
     </header>
   );
 }
