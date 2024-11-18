@@ -5,31 +5,26 @@ import { Leaf, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { orbitron } from "@/app/fonts/fonts";
 import { motion, AnimatePresence } from "framer-motion";
-import { usePathname, useRouter } from "next/navigation";
 import { Button } from "./ui/button";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
-  const router = useRouter();
   const path = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const scrollToSection = (id: string) => {
-    if (path !== "/") {
-      router.push(`/#${id}`);
-    } else {
-      const element = document.getElementById(id);
-      if (element) {
-        const headerOffset = 80;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+    const element = document.getElementById(id);
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
-      }
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -42,41 +37,43 @@ export default function Header() {
           </div>
           <h2 className={`${orbitron.className}`}>Carbon Heroes</h2>
         </Link>
-        <div className="ml-auto flex items-center">
-          <nav className="hidden sm:flex gap-6">
-            <Button
-              variant={"link"}
-              className="text-sm font-medium hover:underline underline-offset-4"
-              onClick={() => scrollToSection("sobre")}
-            >
-              Sobre
+        {path === "/" && (
+          <div className="ml-auto flex items-center">
+            <nav className="hidden sm:flex gap-6">
+              <Button
+                variant={"link"}
+                className="text-sm font-medium hover:underline underline-offset-4"
+                onClick={() => scrollToSection("sobre")}
+              >
+                Sobre
+              </Button>
+              <Button
+                variant={"link"}
+                className="text-sm font-medium hover:underline underline-offset-4"
+                onClick={() => scrollToSection("recursos")}
+              >
+                Recursos
+              </Button>
+              <Button
+                variant={"link"}
+                className="text-sm font-medium hover:underline underline-offset-4"
+                onClick={() => scrollToSection("como-jogar")}
+              >
+                Como jogar
+              </Button>
+            </nav>
+            <Button onClick={toggleMenu} className="sm:hidden">
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
-            <Button
-              variant={"link"}
-              className="text-sm font-medium hover:underline underline-offset-4"
-              onClick={() => scrollToSection("recursos")}
-            >
-              Recursos
-            </Button>
-            <Button
-              variant={"link"}
-              className="text-sm font-medium hover:underline underline-offset-4"
-              onClick={() => scrollToSection("como-jogar")}
-            >
-              Como jogar
-            </Button>
-          </nav>
-          <Button onClick={toggleMenu} className="sm:hidden">
-            {isMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
-          </Button>
-        </div>
+          </div>
+        )}
       </div>
       <AnimatePresence>
-        {isMenuOpen && (
+        {isMenuOpen && path === "/" && (
           <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
