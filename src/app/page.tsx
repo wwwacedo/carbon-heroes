@@ -195,10 +195,9 @@ export default function HomePage() {
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-green-900">
                   3
                 </div>
-                <h3 className="text-xl font-bold">Tome uma atitude</h3>
+                <h3 className="text-xl font-bold">Compare seus resultados</h3>
                 <p className="text-gray-600">
-                  Aprenda sobre maneiras de reduzir seu impacto e acompanhar seu
-                  progresso ao longo do tempo
+                  Compare seus resultados com seus amigos e descubra quem é o <span className={`${orbitron.className}`}>Carbon Hero</span>
                 </p>
               </div>
             </div>
