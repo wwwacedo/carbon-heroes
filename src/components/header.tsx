@@ -14,20 +14,6 @@ export default function Header() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const headerOffset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
     <header className="m-auto bg-gray-50 border-b">
       <div className="container m-auto px-4 py-2 flex items-center">
@@ -40,27 +26,15 @@ export default function Header() {
         {path === "/" && (
           <div className="ml-auto flex items-center">
             <nav className="hidden sm:flex gap-6">
-              <Button
-                variant={"link"}
-                className="text-sm font-medium hover:underline underline-offset-4"
-                onClick={() => scrollToSection("sobre")}
-              >
-                Sobre
-              </Button>
-              <Button
-                variant={"link"}
-                className="text-sm font-medium hover:underline underline-offset-4"
-                onClick={() => scrollToSection("recursos")}
-              >
-                Recursos
-              </Button>
-              <Button
-                variant={"link"}
-                className="text-sm font-medium hover:underline underline-offset-4"
-                onClick={() => scrollToSection("como-jogar")}
-              >
-                Como jogar
-              </Button>
+              <Link href={"/#sobre"}>
+                <Button variant={"link"}>Sobre</Button>
+              </Link>
+              <Link href={"/#recursos"}>
+                <Button variant={"link"}>Recursos</Button>
+              </Link>
+              <Link href={"/#como-jogar"}>
+                <Button variant={"link"}>Como jogar</Button>
+              </Link>
             </nav>
             <Button onClick={toggleMenu} className="sm:hidden">
               {isMenuOpen ? (
@@ -80,36 +54,15 @@ export default function Header() {
             exit={{ opacity: 0, y: -20 }}
             className="sm:hidden container m-auto px-4  flex flex-col text-center pb-2"
           >
-            <Button
-              variant={"link"}
-              className="text-sm font-medium hover:underline underline-offset-4"
-              onClick={() => {
-                scrollToSection("sobre");
-                toggleMenu();
-              }}
-            >
-              Sobre
-            </Button>
-            <Button
-              variant={"link"}
-              className="text-sm font-medium hover:underline underline-offset-4"
-              onClick={() => {
-                scrollToSection("recursos");
-                toggleMenu();
-              }}
-            >
-              Recursos
-            </Button>
-            <Button
-              variant={"link"}
-              className="text-sm font-medium hover:underline underline-offset-4"
-              onClick={() => {
-                scrollToSection("como-jogar");
-                toggleMenu();
-              }}
-            >
-              Como jogar
-            </Button>
+            <Link href={"/#sobre"}>
+              <Button variant={"link"}>Sobre</Button>
+            </Link>
+            <Link href={"/#recursos"}>
+              <Button variant={"link"}>Recursos</Button>
+            </Link>
+            <Link href={"/#como-jogar"}>
+              <Button variant={"link"}>Como jogar</Button>
+            </Link>
           </motion.nav>
         )}
       </AnimatePresence>
