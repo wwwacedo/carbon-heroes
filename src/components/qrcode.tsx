@@ -1,6 +1,16 @@
+"use client";
+import { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
 
-export default function QrCode({ url }: { url: string }) {
+export default function QrCode() {
+  
+	const [url, setUrl] = useState("");
+
+  useEffect(() => {
+    const currentUrl = window.location.href;
+    setUrl(currentUrl);
+  }, []);
+
   return (
     <div>
       <QRCode

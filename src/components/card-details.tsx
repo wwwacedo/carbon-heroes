@@ -88,7 +88,6 @@ const AvaliaUnidade = (valor: string | number, unidade: Unidade) => {
 	if (valorNumber > 1 || valorNumber === 0) {
 		switch (unidade) {
 			case Unidade.Pessoa:
-				console.log("pessoas");
 				return "pessoas";
 			case Unidade.Litro:
 				return "litros";

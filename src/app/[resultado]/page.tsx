@@ -22,7 +22,10 @@ import QrCode from "@/components/qrcode";
 // tudo zero
 // http://localhost:3000/resultado?nome=Mariana%20Macedo&p1=false&p7=false&p10=false&p13=false&p19=false&p21=false&p23=false
 
+// Carbon Hero
 // http://localhost:3000/resultado?nome=Mariaa&p1=false&p7=false&p10=false&p13=false&p17=250&p18=2&p19=false&p21=true&p22=4&p23=false
+
+
 
 export default async function ResultadoPage({
   searchParams,
@@ -64,6 +67,7 @@ export default async function ResultadoPage({
   const avaliaString = (valor: string): boolean => {
     return valor === "true" ? true : false;
   };
+
 
   const respostas: Respostas = {
     nome: data.nome,
@@ -242,10 +246,10 @@ export default async function ResultadoPage({
                 >
                   Compartilhe seus resultados
                 </h2>
-                <div className="w-full px-6 flex justify-center">
+                <div className="w-full px-6 flex justify-center pb-12">
                   <div className="bg-white p-4 rounded-lg shadow-lg">
                     <div className="w-64 h-64 relative">
-                      <QrCode url="https://carbon-heroes.vercel.app" />
+                      <QrCode />
                     </div>
                   </div>
                 </div>
