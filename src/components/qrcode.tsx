@@ -1,4 +1,5 @@
 "use client";
+import { orbitron } from "@/app/fonts/fonts";
 import { useEffect, useState } from "react";
 import QRCode from "react-qr-code";
 
@@ -13,6 +14,7 @@ export default function QrCode() {
 
   return (
     <div>
+			<h2 className={`${orbitron.className}`}>Carbon Hero</h2>
       <QRCode
         value={url}
         size={256}

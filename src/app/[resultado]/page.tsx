@@ -248,7 +248,7 @@ export default async function ResultadoPage({
                 </h2>
                 <div className="w-full px-6 flex justify-center pb-12">
                   <div className="bg-white p-4 rounded-lg shadow-lg">
-                    <div className="w-64 h-64 relative">
+                    <div className="w-70 h-70 flex items-center">
                       <QrCode />
                     </div>
                   </div>
