@@ -20,39 +20,56 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { DialogClose } from "@radix-ui/react-dialog";
+import Image from "next/image";
 
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="w-full flex justify-center py-12 md:py-24 lg:py-32 xl:py-48 bg-green-100">
+        <section className="w-full flex justify-center py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-b from-green-50 to-green-200">
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                  Torne-se um Herói do Carbono
-                </h1>
-                <p className="mx-auto max-w-[700px] text-gray-600 md:text-xl">
-                  Descubra sua pegada de carbono e aprenda como reduzi-la com
-                  nosso jogo de perguntas interativo.
-                </p>
+            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-16 items-center">
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl xl:text-7xl/none bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-green-500">
+                    Torne-se um <br />
+                    Herói do Carbono
+                  </h1>
+                  <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
+                    Descubra sua pegada de carbono e aprenda como reduzi-la com
+                    nosso jogo de perguntas interativo.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-4 min-[400px]:flex-row">
+                  <DialogHero>
+                    <Button
+                      size="lg"
+                      className="bg-green-600 hover:bg-green-700 text-white font-semibold text-base"
+                    >
+                      Iniciar teste
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </DialogHero>
+                  <Link href="#sobre">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="border-green-600 text-green-600 hover:bg-green-50 text-base"
+                    >
+                      Saiba mais
+                    </Button>
+                  </Link>
+                </div>
               </div>
-              <div className="space-x-4">
-                <DialogHero>
-                  <Button
-                    size={"lg"}
-                    className="bg-green-600 hover:bg-green-700 text-base"
-                  >
-                    Iniciar teste
-                    <ArrowRight className="ml-2 h-6 w-6" />
-                  </Button>
-                </DialogHero>
-                <Link href="#sobre">
-                  <Button size={"lg"} variant="outline" className="text-base">
-                    Saiba mais
-                  </Button>
-                </Link>
+              <div className="flex items-center justify-center">
+                <div className="">
+                  <Image
+                    alt="Carbon Hero Illustration"
+                    src="/carbon-hero.png"
+                    width={1000}
+                    height={1000}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -197,7 +214,8 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-xl font-bold">Compare seus resultados</h3>
                 <p className="text-gray-600">
-                  Compare seus resultados com seus amigos e descubra quem é o <span className={`${orbitron.className}`}>Carbon Hero</span>
+                  Compare seus resultados com seus amigos e descubra quem é o{" "}
+                  <span className={`${orbitron.className}`}>Carbon Hero</span>
                 </p>
               </div>
             </div>

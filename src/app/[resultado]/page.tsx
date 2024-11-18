@@ -22,8 +22,10 @@ import QrCode from "@/components/qrcode";
 // tudo zero
 // http://localhost:3000/resultado?nome=Mariana%20Macedo&p1=false&p7=false&p10=false&p13=false&p19=false&p21=false&p23=false
 
-// Carbon Hero
-// http://localhost:3000/resultado?nome=Mariaa&p1=false&p7=false&p10=false&p13=false&p17=250&p18=2&p19=false&p21=true&p22=4&p23=false
+// http://localhost:3000/resultado?nome=Davi&p1=true&p2=2&p3=50&p7=false&p10=true&p11=2&p12=6&p13=false&p17=200&p18=2&p19=false&p21=true&p22=4&p23=true&p24=20
+
+// Carbon HeroA
+// http://localhost:3000/resultado?nome=Juliana&p1=false&p7=false&p10=false&p13=false&p17=250&p18=2&p19=false&p21=true&p22=4&p23=false
 
 
 
