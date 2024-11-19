@@ -33,7 +33,7 @@ export default function HomePage() {
                 <div className="space-y-4">
                   <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl xl:text-7xl/none bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-green-500">
                     Torne-se um <br />
-                    Herói do Carbono
+                    Heroi do Carbono
                   </h1>
                   <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
                     Descubra sua pegada de carbono e aprenda como reduzi-la com
@@ -227,7 +227,7 @@ export default function HomePage() {
             <div className="flex flex-col items-center space-y-4 text-center text-white">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                  Pronto para se tornar um Herói do Carbono?
+                  Pronto para se tornar um Heroi do Carbono?
                 </h2>
                 <p className="mx-auto max-w-[700px] md:text-xl">
                   Faça o teste agora e comece sua jornada em direção a um estilo
